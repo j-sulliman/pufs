@@ -1,10 +1,11 @@
 from ucsmsdk.ucshandle import UcsHandle
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
-#help(UcsHandle)
-handle = UcsHandle("192.168.2.23", "ucspe", "ucspe", port=443, secure=True)
-handle.get_auth_token()
-handle.login(auto_refresh=True)
+def ucs_logon(ip_addr="192.168.2.23", usr="ucspe", pw="ucspe"):
+    handle = UcsHandle(ip_addr, usr, pw, port=443, secure=True)
+    handle.get_auth_token()
+    handle.login(auto_refresh=True)
+    return handle
 
 #handle.process_xml_elem(elem=ucsmethodfactory.config_find_dns_by_class_id(cookie=handle.cookie, class_id="LsServer",
 #                                                                          in_filter=None))
@@ -13,7 +14,7 @@ handle.login(auto_refresh=True)
 #data = handle.query_classid(class_id="fcpoolInitiator", filter_str=fcpool_filter)
 
 
-def configure_organisation(name):
+def configure_organisation(handle, name):
     from ucsmsdk.mometa.org.OrgOrg import OrgOrg
     mo = OrgOrg(parent_mo_or_dn="org-root", name=name)
     handle.add_mo(mo)
@@ -27,7 +28,7 @@ def configure_organisation(name):
         #print(data)
 
 
-def configure_uuid_pool(org, name, descr, assgn_order, uuid_to, uuid_from, pref = 'derived'):
+def configure_uuid_pool(handle, org, name, descr, assgn_order, uuid_to, uuid_from, pref = 'derived'):
 
     from ucsmsdk.mometa.uuidpool.UuidpoolPool import UuidpoolPool
     from ucsmsdk.mometa.uuidpool.UuidpoolBlock import UuidpoolBlock
@@ -48,7 +49,7 @@ def configure_uuid_pool(org, name, descr, assgn_order, uuid_to, uuid_from, pref 
         #print(data)
 
 
-def configure_boot_policy(org, name, descr):
+def configure_boot_policy(handle, org, name, descr):
     from ucsmsdk.mometa.lsboot.LsbootPolicy import LsbootPolicy
     from ucsmsdk.mometa.lsboot.LsbootVirtualMedia import LsbootVirtualMedia
     from ucsmsdk.mometa.lsboot.LsbootStorage import LsbootStorage
@@ -69,7 +70,7 @@ def configure_boot_policy(org, name, descr):
     except Exception, err:
         print(Fore.YELLOW + 'Error: {}, Boot Policy {}. '.format(err, name))
 
-def configure_local_disk_conf_policy(org, name, descr):
+def configure_local_disk_conf_policy(handle, org, name, descr):
     from ucsmsdk.mometa.storage.StorageLocalDiskConfigPolicy import StorageLocalDiskConfigPolicy
 
     mo = StorageLocalDiskConfigPolicy(parent_mo_or_dn="org-root/org-{}".format(org), protect_config="yes", name=name,
@@ -83,7 +84,7 @@ def configure_local_disk_conf_policy(org, name, descr):
     except Exception, err:
         print(Fore.YELLOW + 'Error: {}, Local Disk Policy {}. '.format(err, name))
 
-def configure_bios_policy(org, name, descr, quiet_boot = 'disabled'):
+def configure_bios_policy(handle, org, name, descr, quiet_boot = 'disabled'):
     from ucsmsdk.mometa.bios.BiosVProfile import BiosVProfile
     from ucsmsdk.mometa.bios.BiosVfConsistentDeviceNameControl import BiosVfConsistentDeviceNameControl
     from ucsmsdk.mometa.bios.BiosVfFrontPanelLockout import BiosVfFrontPanelLockout
@@ -107,7 +108,7 @@ def configure_bios_policy(org, name, descr, quiet_boot = 'disabled'):
         print(Fore.YELLOW + 'Error: {}, BIOS Policy {}. '.format(err, name))
 
 
-def configure_scrub_policy(org, name, descr):
+def configure_scrub_policy(handle, org, name, descr):
     from ucsmsdk.mometa.compute.ComputeScrubPolicy import ComputeScrubPolicy
 
     mo = ComputeScrubPolicy(parent_mo_or_dn="org-root/org-{}".format(org), flex_flash_scrub="no", name=name,
@@ -121,7 +122,7 @@ def configure_scrub_policy(org, name, descr):
         print(Fore.YELLOW + 'Error: {}, Scrub Policy {}. '.format(err, name))
 
 
-def configure_maint_policy(org, name='', reboot_pol="user-ack", descr=''):
+def configure_maint_policy(handle, org, name='', reboot_pol="user-ack", descr=''):
     from ucsmsdk.mometa.lsmaint.LsmaintMaintPolicy import LsmaintMaintPolicy
 
     mo = LsmaintMaintPolicy(parent_mo_or_dn="org-root/org-{}".format(org), uptime_disr=reboot_pol, name=name,
@@ -129,56 +130,31 @@ def configure_maint_policy(org, name='', reboot_pol="user-ack", descr=''):
                             policy_owner="local")
     handle.add_mo(mo)
 
-    handle.commit()
+    try:
+        handle.commit()
+        print(Fore.GREEN + 'Scrub Policy {} configured'.format(name))
+    except Exception, err:
+        print(Fore.YELLOW + 'Error: {}, Maintenance Policy {}. '.format(err, name))
 
-def create_sp_from_template():
+def create_sp_from_template(handle, start_sp_value=611, sp_quantity=12, sp_name_prefix="csvipresx", org="AKL-VI-APP",
+                            template_name="AKL-VI-APPLICATION_1"):
     from ucsmsdk.ucsmethodfactory import ls_instantiate_n_named_template
     from ucsmsdk.ucsbasetype import DnSet, Dn
+    start_value = start_sp_value
+    for sp in range(sp_quantity):
+        dn_set = DnSet()
+        dn = Dn()
+        dn.attr_set("value", sp_name_prefix+str(start_value))
+        dn_set.child_add(dn)
+        start_value += 1
 
-    dn_set = DnSet()
-    dn = Dn()
-    dn.attr_set("value", "csvipresx611")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx612")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx613")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx614")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx615")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx616")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx617")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx618")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx619")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx620")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx621")
-    dn_set.child_add(dn)
-    dn = Dn()
-    dn.attr_set("value", "csvipresx622")
-    dn_set.child_add(dn)
-    elem = ls_instantiate_n_named_template(cookie=handle.cookie, dn="org-root/org-AKL-VI-APP/ls-AKL-VI-APPLICATION_1",
-                                           in_error_on_existing="true", in_name_set=dn_set,
-                                           in_target_org="org-root/org-AKL-VI-APP", in_hierarchical="false")
-    mo_list = handle.process_xml_elem(elem)
+        elem = ls_instantiate_n_named_template(cookie=handle.cookie, dn="org-root/org-{}/ls-{}".format(org, template_name),
+                                               in_error_on_existing="true", in_name_set=dn_set,
+                                               in_target_org="org-root/org-{}".format(org), in_hierarchical="false")
+        mo_list = handle.process_xml_elem(elem)
 
 
-def configure_host_fw_policy(org, name, descr):
+def configure_host_fw_policy(handle, org, name, descr):
     from ucsmsdk.mometa.firmware.FirmwareComputeHostPack import FirmwareComputeHostPack
     from ucsmsdk.mometa.firmware.FirmwareExcludeServerComponent import FirmwareExcludeServerComponent
 
@@ -196,7 +172,7 @@ def configure_host_fw_policy(org, name, descr):
         print(Fore.YELLOW + 'Error: {}, Firmware Policy {}. '.format(err, name))
 
 
-def configure_vlans(vlan_id, vlan_name):
+def configure_vlans(handle, vlan_id, vlan_name):
     from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
     if len(vlan_id) == 3:
         vlan_id_cleaned = "0" + vlan_id
@@ -222,7 +198,7 @@ def configure_vlans(vlan_id, vlan_name):
 
 
 
-def configure_mac_pools(org, description, name, mac_from, mac_to):
+def configure_mac_pools(handle, org, description, name, mac_from, mac_to):
     from ucsmsdk.mometa.macpool.MacpoolPool import MacpoolPool
     from ucsmsdk.mometa.macpool.MacpoolBlock import MacpoolBlock
 
@@ -238,7 +214,7 @@ def configure_mac_pools(org, description, name, mac_from, mac_to):
         print(Fore.RED + 'Error: {}, MAC Pool {}. '.format(err, name))
 
 
-def configure_ip_pools(org, description, name, ip_from, ip_to, ip_gw = "10.233.178.1", assignment_ordr = "sequential"):
+def configure_ip_pools(handle, org, description, name, ip_from, ip_to, ip_gw = "10.233.178.1", assignment_ordr = "sequential"):
     from ucsmsdk.mometa.ippool.IppoolPool import IppoolPool
     from ucsmsdk.mometa.ippool.IppoolBlock import IppoolBlock
 
@@ -257,7 +233,7 @@ def configure_ip_pools(org, description, name, ip_from, ip_to, ip_gw = "10.233.1
         #print(data)
 
 
-def configure_qos_policy(org, description, name, priority, burst):
+def configure_qos_policy(handle, org, description, name, priority, burst):
     from ucsmsdk.mometa.epqos.EpqosDefinition import EpqosDefinition
     from ucsmsdk.mometa.epqos.EpqosEgress import EpqosEgress
 
@@ -276,7 +252,7 @@ def configure_qos_policy(org, description, name, priority, burst):
         #print(data)
 
 
-def configure_cdp_pol(org, description, name):
+def configure_cdp_pol(handle, org, description, name):
     from ucsmsdk.mometa.nwctrl.NwctrlDefinition import NwctrlDefinition
     from ucsmsdk.mometa.dpsec.DpsecMac import DpsecMac
 
@@ -296,7 +272,7 @@ def configure_cdp_pol(org, description, name):
 
 
 
-def configure_wwnn_pools(org="org-root/org-AKL-VI-APP",
+def configure_wwnn_pools(handle, org="org-root/org-AKL-VI-APP",
                          wwnn_name="AKL-WWNN-Pool",
                          description="Auckland WWNN pool",
                          assignment_order="sequential",
@@ -323,7 +299,7 @@ def configure_wwnn_pools(org="org-root/org-AKL-VI-APP",
         print(Fore.YELLOW + 'Unable to configure WWNN Pool {}. Does it already exist?'.format(wwnn_name))
 
 
-def configure_wwpn_pools(org, description, name, wwpn_from, wwpn_to, assignment_ordr = "sequential"):
+def configure_wwpn_pools(handle, org, description, name, wwpn_from, wwpn_to, assignment_ordr = "sequential"):
     from ucsmsdk.mometa.fcpool.FcpoolInitiators import FcpoolInitiators
     from ucsmsdk.mometa.fcpool.FcpoolBlock import FcpoolBlock
 
@@ -340,7 +316,7 @@ def configure_wwpn_pools(org, description, name, wwpn_from, wwpn_to, assignment_
         #data = handle.set_dump_xml()
         #print(data)
 
-def configure_vsans(name='',
+def configure_vsans(handle, name='',
                     vsan_id='1280',
                     fabric='A'):
     from ucsmsdk.mometa.fabric.FabricVsan import FabricVsan
@@ -361,7 +337,7 @@ def configure_vsans(name='',
         print(Fore.RED + 'Error: {}, VSAN {}. '.format(err, name))
 
 
-def configure_vhba_templates(org, description, name, wwpn_pool, vsan_name, fabric = 'A', qos_pol='VI-FC'):
+def configure_vhba_templates(handle, org, description, name, wwpn_pool, vsan_name, fabric = 'A', qos_pol='VI-FC'):
     from ucsmsdk.mometa.vnic.VnicSanConnTempl import VnicSanConnTempl
     from ucsmsdk.mometa.vnic.VnicFcIf import VnicFcIf
 
@@ -390,7 +366,7 @@ def configure_vhba_templates(org, description, name, wwpn_pool, vsan_name, fabri
         print(Fore.YELLOW + 'Unable to configure vHBA Template {}. Does it already exist?'.format(name))
 
 
-def configure_vnic_templates(org,
+def configure_vnic_templates(handle, org,
                              description='',
                              name='',
                              mac_pool='',
@@ -430,7 +406,7 @@ def configure_vnic_templates(org,
         print(Fore.YELLOW + 'Unable to configure vNIC Template {}. Does it already exist?'.format(name))
 
 
-def configure_app_vnic_template(org, desc='',
+def configure_app_vnic_template(handle, org, desc='',
                                 name='',
                                 mac_pool='',
                                 mtu="9000",
@@ -471,7 +447,7 @@ def configure_app_vnic_template(org, desc='',
 
     handle.commit()
 
-def configure_san_connectivity_policy(organisation = "org-root/org-AKL-VI-APP",
+def configure_san_connectivity_policy(handle, organisation = "org-root/org-AKL-VI-APP",
                                       name="UCS_Lan",
                                       vhba_name="vHBA0",
                                       vhba_template_name="AKL-SAN-A",
@@ -527,7 +503,7 @@ def configure_san_connectivity_policy(organisation = "org-root/org-AKL-VI-APP",
         handle.commit()
         print(Fore.RED + 'Error: {}, SAN Connectivity Policy {}. '.format(err, name))
 
-def configure_lan_connectivity_policy(organisation = "org-root/org-AKL-VI-APP",
+def configure_lan_connectivity_policy(handle, organisation = "org-root/org-AKL-VI-APP",
                                       vnic_template_name="AKL-VI-MGMT-A",
                                       vnic_order="1",
                                       name="UCS_Lan",
@@ -600,50 +576,7 @@ def configure_service_profile_template(handle, name, type, resolve_remote, descr
                        vmedia_policy_name="",
                        server_pool_name="",
                        org="org-root"):
-    """
-    This method creates Service profile template.
 
-    Args:
-        handle (UcsHandle)
-        name(string): Name of SP template
-        type : "initial-template", "updating-template"
-        resolve_remote : "no", "yes"
-        descr (string): Basic description
-        src_templ_name (string): Name of Source template
-        ext_ip_state= :none", "pooled", "static"
-        ext_ip_pool_name (string): Name of IP Pool
-        ident_pool_name (string): Name of Ident pool
-        agent_policy_name (string): Name of agent policy
-        bios_profile_name (string): Name of bios profile
-        boot_policy_name (string): Name of boot policy
-        dynamic_con_policy_name (string): Name of dynamic connection policy
-        host_fw_policy_name (string):  Name of Host firmware.
-        kvm_mgmt_policy_name (string): KVM management policy
-        lan_conn_policy_name (string): LAN connection policy
-        local_disk_policy_name (string): Local disk policy
-        maint_policy_name (string): Maintenance policy
-        mgmt_access_policy_name(string): Access Management policy
-        mgmt_fw_policy_name (string): Firmware management policy
-        power_policy_name (string): Power policy
-        san_conn_policy_name (string): SAN connection policy
-        scrub_policy_name (string): Scrub policy
-        sol_policy_name (string): SOL policy
-        stats_policy_name (string): Statistics Policy
-        vcon_profile_name (string): Virtual Connection profile policy
-        vmedia_policy_name (string): Virtual media policy
-        server_pool_name (string): Server Pool
-        parent_dn= Parent DN
-
-    Returns:
-        Service Profile: Managed Object
-
-    Raises:
-        ValueError: If OrgOrg is not present
-
-    Example:
-        sp_template_create(handle, name="sample_temp", type="initial-template",
-            resolve_remote="yes",local_disk_policy="sample_local")
-    """
     from ucsmsdk.mometa.ls.LsServer import LsServer
     from ucsmsdk.mometa.vnic.VnicConnDef import VnicConnDef
     from ucsmsdk.mometa.ls.LsRequirement import LsRequirement
@@ -696,8 +629,8 @@ def configure_service_profile_template(handle, name, type, resolve_remote, descr
     except Exception, err:
         handle.add_mo(mo, True)
         handle.commit()
-        print(Fore.RED + 'Error: {}, Service Profile Template {}.  Modifying object '.format(err, name))
-
+        print(Fore.YELLOW + 'Error: {}, Service Profile Template {}.  Modifying object '.format(err, name))
+'''
 akl_vlan = ['1030','1031','1032','1033','1034','1035','1036','1037','1038','1039','1040','1041','1042','1043','1044',
             '1045','1046','1047','1048','1049','1050','1051','1052','1053','1054','1055','1056','1057','1058','1059',
             '1061','1065','1070', '1071', '1072','1078','1087','1088','1090','2068','2104','2820','2821','2822',
@@ -709,7 +642,7 @@ hlz_vlans = ["1031","1032","1033","1034","1035","1036","1037","1038","1039","104
              "1087", "1088","1090","2063","2064","2067", "2068","2071","2088","2104","2112","3000","3002",
              "3024", "3025", "3030","3031","503","514","537"]
 
-configure_organisation("AKL-VI-APP")
+configure_organisation(name="AKL-VI-APP")
 
 configure_mac_pools("AKL-VI-APP","AKL MAC Pool for Fabric A","AKL_VI_App_MAC-A","00:25:B5:3A:00:00", "00:25:B5:3A:00:FF")
 configure_mac_pools("AKL-VI-APP","AKL MAC Pool for Fabric B","AKL_VI_App_MAC-B","00:25:B5:3B:00:00", "00:25:B5:3B:00:FF")
@@ -739,20 +672,21 @@ configure_cdp_pol("AKL-VI-APP","Network Control Policy for Auckland Shared Edge 
 configure_vsans(name='AKL-VSAN-A', vsan_id='1280', fabric='A')
 configure_vsans(name='AKL-VSAN-B', vsan_id='1281',fabric='B')
 configure_wwnn_pools(org="org-root/org-AKL-VI-APP",wwnn_name="AKL-WWNN-POOL",description="Auckland WWNN Pool",
-                     assignment_order="sequential",from_wwnn="20:00:00:25:B5:00:00:00",
-                     to_wwnn="20:00:00:25:B5:00:00:00")
-configure_wwpn_pools("AKL-VI-APP","WWPN Pool for Auckland Shared Edge Compute A Side (VSAN 1280) Fabric", "AKL-WWPN-A",
-                     "20:00:2A:25:b5:01:0a:00", "20:00:2A:25:B5:01:0A:FF")
-configure_wwpn_pools("AKL-VI-APP","WWPN Pool for Auckland Shared Edge Compute B Side (VSAN 1281) Fabric", "AKL-WWPN-B",
-                     "20:00:2B:25:b5:01:0b:00", "20:00:2B:25:B5:01:0b:FF")
-configure_vhba_templates("AKL-VI-APP","vHBA Template for Auckland Shared Edge Compute Management SAN Fabric A vHBA",
-                         "AKL-HBA-A", "AKL-WWPN-A","AKL-VSAN-A","A","VI-FC")
-configure_vhba_templates("AKL-VI-APP","vHBA Template for Auckland Shared Edge Compute Management SAN Fabric B vHBA",
-                         "AKL-HBA-B", "AKL-WWPN-B","AKL-VSAN-B","B","VI-FC")
+                     assignment_order="sequential",from_wwnn="20:00:20:25:B5:01:00:00",
+                     to_wwnn="20:00:20:25:B5:01:00:FF")
+
+configure_wwpn_pools(org="AKL-VI-APP",description="WWPN Pool for Auckland Shared Edge Compute A Side (VSAN 1280)",
+                     name="AKL-WWPN-A", wwpn_from="20:00:2A:25:b5:01:0a:00", wwpn_to="20:00:2A:25:B5:01:0A:FF")
+configure_wwpn_pools(org="AKL-VI-APP",description="WWPN Pool for Auckland Shared Edge Compute B Side (VSAN 1281)",
+                     name="AKL-WWPN-B", wwpn_from="20:00:2B:25:b5:01:0b:00", wwpn_to="20:00:2B:25:B5:01:0b:FF")
+configure_vhba_templates(org="AKL-VI-APP", description="vHBA Template for Auckland Shared Edge Compute SAN Fabric A",
+                         name="AKL-HBA-A", wwpn_pool="AKL-WWPN-A",vsan_name="AKL-VSAN-A",fabric="A",qos_pol="VI-FC")
+configure_vhba_templates(org="AKL-VI-APP",description="vHBA Template for Auckland Shared Edge Compute SAN Fabric B",
+                         name="AKL-HBA-B", wwpn_pool="AKL-WWPN-B",vsan_name="AKL-VSAN-B",fabric="B",qos_pol="VI-FC")
 configure_vnic_templates("AKL-VI-APP","vNIC Template for Auckland Shared Edge Compute Management vNIC side A",
                          "AKL-VI-MGMT-A","AKL_VI_App_MAC-A","9000","VI-MGMT","AKL-CDP-EN","VI-MGMT_1112","A")
 configure_vnic_templates("AKL-VI-APP","vNIC Template for Auckland Shared Edge Compute Management vNIC side B",
-                         "AKL-VI-MGMT-B","AKL_VI_App_MAC-A","9000","VI-MGMT","AKL-CDP-EN","VI-MGMT_1112","B")
+                         "AKL-VI-MGMT-B","AKL_VI_App_MAC-B","9000","VI-MGMT","AKL-CDP-EN","VI-MGMT_1112","B")
 configure_vnic_templates("AKL-VI-APP","vNIC Template for Auckland Shared Edge Compute vMotion vNIC side A",
                          "AKL-VI-VMOTION-A","AKL_VI_App_MAC-A","9000","VI-VMOTION","AKL-CDP-EN","VI-VMOTION_1111","A")
 configure_vnic_templates("AKL-VI-APP","vNIC Template for Auckland Shared Edge Compute vMotion vNIC side B",
@@ -786,7 +720,7 @@ configure_vlans("1114", 'VI-RP')
 configure_san_connectivity_policy(organisation="org-root/org-AKL-VI-APP",
                                   name="AKL-VI-APP-SCON",
                                   vhba_name="vHBA0",
-                                  vhba_template_name="AKL-SAN-A",
+                                  vhba_template_name="AKL-HBA-A",
                                   vsan_name="AKL-VSAN-A",
                                   description="Auckland SAN Connectivity Policy",
                                   switch_side="A",
@@ -799,7 +733,7 @@ configure_san_connectivity_policy(organisation="org-root/org-AKL-VI-APP",
 configure_san_connectivity_policy(organisation="org-root/org-AKL-VI-APP",
                                   name="AKL-VI-APP-SCON",
                                   vhba_name="vHBA1",
-                                  vhba_template_name="AKL-SAN-B",
+                                  vhba_template_name="AKL-HBA-B",
                                   vsan_name="AKL-VSAN-B",
                                   description="Auckland SAN Connectivity Policy",
                                   switch_side="B",
@@ -898,9 +832,15 @@ configure_lan_connectivity_policy(organisation="org-root/org-AKL-VI-APP",
                                   qos_pol="AKL-VI-RP",
                                   vnic_order="10")
 
-configure_service_profile_template(handle, name="AKL-VI-APPLICATION_1", type= "initial-template", resolve_remote= "yes",
-                                   descr="AKL VI APP Descr", usr_lbl="",src_templ_name="",ext_ip_state="pooled",
-                                   ext_ip_pool_name="AKL-KVM", ident_pool_name="AKL-VI-App-UUID",agent_policy_name='',
+configure_service_profile_template(handle, name="AKL-VI-APPLICATION_1",
+                                   type= "initial-template",
+                                   resolve_remote= "yes",
+                                   descr="AKL VI APP Descr",
+                                   usr_lbl="",src_templ_name="",
+                                   ext_ip_state="pooled",
+                                   ext_ip_pool_name="AKL-KVM",
+                                   ident_pool_name="AKL-VI-App-UUID",
+                                   agent_policy_name='',
                                    bios_profile_name="AKL-NO-QUIET",
                                    boot_policy_name="AKL-CDROM",
                                    dynamic_con_policy_name="",
@@ -913,7 +853,7 @@ configure_service_profile_template(handle, name="AKL-VI-APPLICATION_1", type= "i
                                    mgmt_access_policy_name="",
                                    mgmt_fw_policy_name="",
                                    power_policy_name="default",
-                                   scrub_policy_name="",
+                                   scrub_policy_name="AKL-BIOS-Scrub",
                                    sol_policy_name="",
                                    stats_policy_name="default",
                                    vmedia_policy_name="",
@@ -921,3 +861,6 @@ configure_service_profile_template(handle, name="AKL-VI-APPLICATION_1", type= "i
                                    )
 
 
+create_sp_from_template(start_sp_value=611, sp_quantity=12,sp_name_prefix="csvipresx",org="AKL-VI-APP",
+                        template_name="AKL-VI-APPLICATION_1")
+'''
