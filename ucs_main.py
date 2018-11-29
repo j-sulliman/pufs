@@ -1,11 +1,19 @@
 from ucsmsdk.ucshandle import UcsHandle
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
+'''
 def ucs_logon(ip_addr="192.168.2.23", usr="ucspe", pw="ucspe"):
     handle = UcsHandle(ip_addr, usr, pw, port=443, secure=True)
     handle.get_auth_token()
     handle.login(auto_refresh=True)
     return handle
+
+'''
+def ucs_logon(ip_addr="192.168.2.23", usr="ucspe", pw="ucspe"):
+    handle = UcsHandle(ip_addr, usr, pw)
+    handle.login(auto_refresh=True)
+    return handle
+
 
 #handle.process_xml_elem(elem=ucsmethodfactory.config_find_dns_by_class_id(cookie=handle.cookie, class_id="LsServer",
 #                                                                          in_filter=None))
@@ -74,8 +82,8 @@ def configure_local_disk_conf_policy(handle, org, name, descr):
     from ucsmsdk.mometa.storage.StorageLocalDiskConfigPolicy import StorageLocalDiskConfigPolicy
 
     mo = StorageLocalDiskConfigPolicy(parent_mo_or_dn="org-root/org-{}".format(org), protect_config="yes", name=name,
-                                      descr=descr, flex_flash_raid_reporting_state="disable",
-                                      flex_flash_state="disable", policy_owner="local", mode="any-configuration")
+                                      descr=descr, flex_flash_raid_reporting_state="enable",
+                                      flex_flash_state="disable", policy_owner="local", mode="raid-mirrored")
     handle.add_mo(mo)
 
     try:
