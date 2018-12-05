@@ -22,8 +22,8 @@ configure_local_disk_conf_policy(handle, "ORB4ESX", "INT-CARD", "Local Disk Poli
 configure_bios_policy(handle, "ORB4ESX", "NO-QUIET", "Local Disk Policy for Tower ESX")
 
 configure_scrub_policy(handle, "ORB4ESX", "BIOS-SCRUB", "Local Disk Policy for Tower ESX")
-configure_ip_pools(handle, "ORB4ESX","KVM Management IP Pool for Tower Compute", "KVM", "10.233.178.16",
-                   "10.233.178.47", "10.233.178.1", "sequential")
+configure_ip_pools(handle, "ORB4ESX","KVM Management IP Pool for Tower Compute", "KVM", "10.48.111.8",
+                   "10.48.111.72", "10.48.111.1", "sequential")
 configure_qos_policy(handle, "ORB4ESX", "Platinum QoS Policy for Tower Application vNIC", "APP",
                      "platinum", "10240")
 configure_qos_policy(handle, "ORB4ESX", "Platinum QoS Policy for Tower Recover NFS vNIC", "NFS",
@@ -201,7 +201,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
 
 
 
-configure_service_profile_template(handle, name="ORB4PRD",
+configure_service_profile_template(handle, name="ORB4ESX-PRD",
                                    type= "initial-template",
                                    resolve_remote= "yes",
                                    descr="AKL VI APP Descr",
@@ -381,7 +381,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   vnic_order="11")
 
 
-configure_service_profile_template(handle, name="ORB4ESXDEV",
+configure_service_profile_template(handle, name="ORB4ESX-DEV",
                                    type= "initial-template",
                                    resolve_remote= "yes",
                                    descr="AKL VI APP Descr",
@@ -409,10 +409,10 @@ configure_service_profile_template(handle, name="ORB4ESXDEV",
                                    org="ORB4ESX"
                                    )
 
-create_sp_from_template(handle, start_sp_value=001, sp_quantity=6,sp_name_prefix="ORB4ESX",org="ORB4ESX",
-                        template_name="ORB4PRD")
+create_sp_from_template(handle, start_sp_value=01, sp_quantity=4,sp_name_prefix="ORB4ESX",org="ORB4ESX",
+                        template_name="ORB4ESX-PRD")
 
 
 
-#create_sp_from_template(handle, start_sp_value=005, sp_quantity=2,sp_name_prefix="ORB4ESX",org="ORB4ESX",
-#                        template_name="ORB4ESXDEV")
+create_sp_from_template(handle, start_sp_value=05, sp_quantity=2,sp_name_prefix="ORB4ESX",org="ORB4ESX",
+                        template_name="ORB4ESX-DEV")
