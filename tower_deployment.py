@@ -8,10 +8,24 @@ from ucs_main import configure_san_connectivity_policy, create_sp_from_template,
 
 
 handle = ucs_logon(ip_addr="192.168.2.114", usr="ucspe", pw="ucspe")
+
+twr_data_vlans = ['114', '116', '118', '119', '216', '218', '306', '307', '400', '401', '402', '404', '405', '406',
+                  '408', '420', '430', '431', '450', '451', '454', '460', '461', '462', '464', '470', '471', '474',
+                  '512', '513', '514', '515', '516', '520', '521', '522', '601', '602', '603', '604', '605', '606',
+                  '607', '608', '609', '610', '818', '819', '821', '900', '901', '902', '903', '904', '950', '951',
+                  '952', '953', '954', '970', '971', '990']
+
 configure_organisation(handle, name="ORB4ESX")
 
-configure_mac_pools(handle, "ORB4ESX","TOWER MAC Pool for Fabric A","ORB4_MAC-A","00:25:B5:1A:00:00", "00:25:B5:1A:00:FF")
-configure_mac_pools(handle, "ORB4ESX","TOWER MAC Pool for Fabric B","ORB4_MAC-B","00:25:B5:1B:00:00", "00:25:B5:1B:00:FF")
+configure_mac_pools(handle, "ORB4ESX","PROD TOWER MAC Pool for Fabric A","ORB4PRD_MAC-A","00:25:B5:1A:00:00",
+                    "00:25:B5:1A:00:FF")
+configure_mac_pools(handle, "ORB4ESX","PROD TOWER MAC Pool for Fabric B","ORB4PRD_MAC-B","00:25:B5:1B:00:00",
+                    "00:25:B5:1B:00:FF")
+
+configure_mac_pools(handle, "ORB4ESX","DEV TOWER MAC Pool for Fabric A","ORB4DEV_MAC-A","00:25:B5:2A:00:00",
+                    "00:25:B5:2A:00:FF")
+configure_mac_pools(handle, "ORB4ESX","DEV TOWER MAC Pool for Fabric B","ORB4DEV_MAC-B","00:25:B5:2B:00:00",
+                    "00:25:B5:2B:00:FF")
 
 configure_uuid_pool(handle,'ORB4ESX',"ORB4ESX-UUID","UUID Pool for Tower ESX","sequential",
                     "0000-000000000256","0000-000000000001")
@@ -23,7 +37,7 @@ configure_bios_policy(handle, "ORB4ESX", "NO-QUIET", "Local Disk Policy for Towe
 
 configure_scrub_policy(handle, "ORB4ESX", "BIOS-SCRUB", "Local Disk Policy for Tower ESX")
 configure_ip_pools(handle, "ORB4ESX","KVM Management IP Pool for Tower Compute", "KVM", "10.48.111.8",
-                   "10.48.111.72", "10.48.111.1", "sequential")
+                   "10.48.111.136", "10.48.111.1", "sequential")
 configure_qos_policy(handle, "ORB4ESX", "Platinum QoS Policy for Tower Application vNIC", "APP",
                      "platinum", "10240")
 configure_qos_policy(handle, "ORB4ESX", "Platinum QoS Policy for Tower Recover NFS vNIC", "NFS",
@@ -43,43 +57,76 @@ configure_wwnn_pools(handle, org="org-root/org-ORB4ESX",wwnn_name="ORB4-WWNN",de
                      assignment_order="sequential",from_wwnn="20:00:20:25:B5:01:00:00",
                      to_wwnn="20:00:20:25:B5:01:00:FF")
 
-configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for Tower ESX A Side (VSAN 1101)",
-                     name="ORB4-WWPN-A", wwpn_from="20:00:2A:25:b5:01:0a:00", wwpn_to="20:00:2A:25:B5:01:0A:FF")
-configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for Tower ESX B Side (VSAN 1102)",
-                     name="ORB4-WWPN-B", wwpn_from="20:00:2B:25:b5:01:0b:00", wwpn_to="20:00:2B:25:B5:01:0b:FF")
+configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for PROD Tower ESX A Side (VSAN 1101)",
+                     name="ORB4PRD-WWPN-A", wwpn_from="20:00:2A:25:b5:01:0a:00", wwpn_to="20:00:2A:25:B5:01:0A:FF")
+configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for PROD Tower ESX B Side (VSAN 1102)",
+                     name="ORB4PRD-WWPN-B", wwpn_from="20:00:2B:25:b5:01:0b:00", wwpn_to="20:00:2B:25:B5:01:0b:FF")
 
+
+configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for DEV Tower ESX A Side (VSAN 1101)",
+                     name="ORB4DEV-WWPN-A", wwpn_from="20:00:2A:25:b5:01:1a:00", wwpn_to="20:00:2A:25:B5:01:1A:FF")
+configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for DEV Tower ESX B Side (VSAN 1102)",
+                     name="ORB4DEV-WWPN-B", wwpn_from="20:00:2B:25:b5:01:1b:00", wwpn_to="20:00:2B:25:B5:01:1b:FF")
 
 
 configure_vlans(handle, "512", 'MGMT')
-configure_vlans(handle, "514", 'MGMT')
 configure_vlans(handle, "515", 'VMOTION')
-configure_vlans(handle, "923", 'BACKUP')
-configure_vlans(handle, "922", 'DATA')
+configure_vlans(handle, "524", 'BACKUP')
+
 
 # Prod vNIC and vHBA Templates
 configure_vhba_templates(handle, org="ORB4ESX", description="vHBA Template for Tower ESX SAN Fabric A",
-                         name="ORB4PRD-HBA-A", wwpn_pool="ORB4-WWPN-A",vsan_name="ORB4-VSAN-A",fabric="A",qos_pol="FC")
+                         name="ORB4PRD-HBA-A", wwpn_pool="ORB4PRD-WWPN-A",vsan_name="ORB4-VSAN-A",fabric="A",qos_pol="FC")
 configure_vhba_templates(handle, org="ORB4ESX",description="vHBA Template for Tower ESX SAN Fabric B",
-                         name="ORB4PRD-HBA-B", wwpn_pool="ORB4-WWPN-B",vsan_name="ORB4-VSAN-B",fabric="B",qos_pol="FC")
+                         name="ORB4PRD-HBA-B", wwpn_pool="ORB4PRD-WWPN-B",vsan_name="ORB4-VSAN-B",fabric="B",qos_pol="FC")
 
 
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Management vNIC side A",
-                         "PRD-MGMT-A","ORB4_MAC-A","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","A")
+                         "PRD-MGMT-A","ORB4PRD_MAC-A","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","A")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Management vNIC side B",
-                         "PRD-MGMT-B","ORB4_MAC-B","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","B")
+                         "PRD-MGMT-B","ORB4PRD_MAC-B","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","B")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX vMotion vNIC side A",
-                         "PRD-VMOTION-A","ORB4_MAC-A","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","A")
+                         "PRD-VMOTION-A","ORB4PRD_MAC-A","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","A")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX vMotion vNIC side B",
-                         "PRD-VMOTION-B","ORB4_MAC-B","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","B")
+                         "PRD-VMOTION-B","ORB4PRD_MAC-B","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","B")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Backup vNIC side A",
-                         "PRD-BKP-A","ORB4_MAC-A","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0923","A")
+                         "PRD-BKP-A","ORB4PRD_MAC-A","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0524","A")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Backup vNIC side B",
-                         "PRD-BKP-B","ORB4_MAC-B","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0923","B")
-configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side A",
-                         "PRD-DATA-A","ORB4_MAC-A","9000","APP","CDP-ENA-LNK-DOWN","DATA_0922","A")
-configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side B",
-                         "PRD-DATA-B","ORB4_MAC-B","9000","APP","CDP-ENA-LNK-DOWN","DATA_0922","B")
+                         "PRD-BKP-B","ORB4PRD_MAC-B","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0524","B")
+#configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side A",
+#                         "PRD-DATA-A","ORB4_MAC-A","9000","APP","CDP-ENA-LNK-DOWN","DATA_0922","A")
+#configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side B",
+#                         "PRD-DATA-B","ORB4_MAC-B","9000","APP","CDP-ENA-LNK-DOWN","DATA_0922","B")
 
+for vlan_id in twr_data_vlans:
+    if len(vlan_id) == 3:
+        vlan_id_cleaned = "0" + vlan_id
+    elif len(vlan_id) == 2:
+        vlan_id_cleaned = "00" + vlan_id
+    else:
+        vlan_id_cleaned = vlan_id
+    configure_vlans(handle, vlan_id, 'DATA_VLANs')
+    configure_app_vnic_template(handle, org="ORB4ESX",
+                                desc="vNIC Template for PROD Tower ESX Backup vNIC side A",
+                                name="PRD-DATA-A",mac_pool="ORB4PRD_MAC-A",mtu="9000",qos_pol="APP",
+                                network_pol="CDP-ENA-LNK-DOWN", vlan_name="DATA_VLANs_{}".format(vlan_id_cleaned),
+                                fabric="A")
+    configure_app_vnic_template(handle, org="ORB4ESX",
+                                desc="vNIC Template for PROD Tower ESX Backup vNIC side B",
+                                name="PRD-DATA-B", mac_pool="ORB4PRD_MAC-B", mtu="9000", qos_pol="APP",
+                                network_pol="CDP-ENA-LNK-DOWN", vlan_name="DATA_VLANs_{}".format(vlan_id_cleaned),
+                                fabric="B")
+
+    configure_app_vnic_template(handle, org="ORB4ESX",
+                                desc="vNIC Template for DEV Tower ESX Backup vNIC side A",
+                                name="DEV-DATA-A", mac_pool="ORB4DEV_MAC-A", mtu="9000", qos_pol="APP",
+                                network_pol="CDP-ENA-LNK-DOWN", vlan_name="DATA_VLANs_{}".format(vlan_id_cleaned),
+                                fabric="A")
+    configure_app_vnic_template(handle, org="ORB4ESX",
+                                desc="vNIC Template for DEV Tower ESX Backup vNIC side B",
+                                name="DEV-DATA-B", mac_pool="ORB4DEV_MAC-B", mtu="9000", qos_pol="APP",
+                                network_pol="CDP-ENA-LNK-DOWN", vlan_name="DATA_VLANs_{}".format(vlan_id_cleaned),
+                                fabric="B")
 
 configure_san_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   name="ORB4PRD-SCON",
@@ -90,7 +137,7 @@ configure_san_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   switch_side="A",
                                   vHBA_order="1",
                                   adapter_profile="VMWare",
-                                  wwpn_pool="ORB4-WWPN-A",
+                                  wwpn_pool="ORB4PRD-WWPN-A",
                                   qos_pol="FC",
                                   wwnn_pool_name="ORB4-WWNN")
 
@@ -103,7 +150,7 @@ configure_san_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   switch_side="B",
                                   vHBA_order="2",
                                   adapter_profile="VMWare",
-                                  wwpn_pool="ORB4-WWPN-B",
+                                  wwpn_pool="ORB4PRD-WWPN-B",
                                   qos_pol="FC",
                                   wwnn_pool_name="ORB4-WWNN")
 
@@ -114,7 +161,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="MGMT vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4PRD-MAC-A",
                                   qos_pol="MGMT",
                                   vnic_order="3")
 
@@ -126,7 +173,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="vMotion vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4PRD-MAC-A",
                                   qos_pol="VMOTION",
                                   vnic_order="4")
 
@@ -137,7 +184,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="App vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4PRD-MAC-A",
                                   qos_pol="APP",
                                   vnic_order="5")
 
@@ -149,7 +196,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="Production Backup vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4PRD-MAC-A",
                                   qos_pol="NFS",
                                   vnic_order="6")
 
@@ -163,7 +210,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="MGMT vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4PRD-MAC-B",
                                   qos_pol="MGMT",
                                   vnic_order="7")
 
@@ -174,7 +221,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="vMotion vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4PRD-MAC-B",
                                   qos_pol="VMOTION",
                                   vnic_order="8")
 
@@ -185,7 +232,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="App vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4PRD-MAC-B",
                                   qos_pol="APP",
                                   vnic_order="9")
 configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
@@ -195,7 +242,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="Backup vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4PRD-MAC-B",
                                   qos_pol="BKP",
                                   vnic_order="10")
 
@@ -233,33 +280,33 @@ configure_service_profile_template(handle, name="ORB4ESX-PRD",
 
 # DEV vNIC and vHBA Templates
 configure_vhba_templates(handle, org="ORB4ESX", description="vHBA Template for Tower ESX SAN Fabric A",
-                         name="ORB4DEV-HBA-A", wwpn_pool="ORB4-WWPN-A",vsan_name="ORB4-VSAN-A",fabric="A",qos_pol="FC")
+                         name="ORB4DEV-HBA-A", wwpn_pool="ORB4DEV-WWPN-A",vsan_name="ORB4-VSAN-A",fabric="A",qos_pol="FC")
 configure_vhba_templates(handle, org="ORB4ESX",description="vHBA Template for Tower ESX SAN Fabric B",
-                         name="ORB4DEV-HBA-B", wwpn_pool="ORB4-WWPN-B",vsan_name="ORB4-VSAN-B",fabric="B",qos_pol="FC")
+                         name="ORB4DEV-HBA-B", wwpn_pool="ORB4DEV-WWPN-B",vsan_name="ORB4-VSAN-B",fabric="B",qos_pol="FC")
 
 
 configure_vhba_templates(handle, org="ORB4ESX", description="vHBA Template for Tower ESX SAN Fabric A",
-                         name="ORB4DEV-HBA-A", wwpn_pool="ORB4-WWPN-A",vsan_name="ORB4-VSAN-A",fabric="A",qos_pol="FC")
+                         name="ORB4DEV-HBA-A", wwpn_pool="ORB4DEV-WWPN-A",vsan_name="ORB4-VSAN-A",fabric="A",qos_pol="FC")
 configure_vhba_templates(handle, org="ORB4ESX",description="vHBA Template for Tower ESX SAN Fabric B",
-                         name="ORB4DEV-HBA-B", wwpn_pool="ORB4-WWPN-B",vsan_name="ORB4-VSAN-B",fabric="B",qos_pol="FC")
+                         name="ORB4DEV-HBA-B", wwpn_pool="ORB4DEV-WWPN-B",vsan_name="ORB4-VSAN-B",fabric="B",qos_pol="FC")
 
 
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Management vNIC side A",
-                         "DEV-MGMT-A","ORB4_MAC-A","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","A")
+                         "DEV-MGMT-A","ORB4DEV_MAC-A","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","A")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Management vNIC side B",
-                         "DEV-MGMT-B","ORB4_MAC-B","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","B")
+                         "DEV-MGMT-B","ORB4DEV_MAC-B","9000","MGMT","CDP-ENA-LNK-DOWN","MGMT_0512","B")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX vMotion vNIC side A",
-                         "DEV-VMOTION-A","ORB4_MAC-A","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","A")
+                         "DEV-VMOTION-A","ORB4DEV_MAC-A","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","A")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX vMotion vNIC side B",
-                         "DEV-VMOTION-B","ORB4_MAC-B","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","B")
+                         "DEV-VMOTION-B","ORB4DEV_MAC-B","9000","VMOTION","CDP-ENA-LNK-DOWN","VMOTION_0515","B")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Backup vNIC side A",
-                         "DEV-BKP-A","ORB4_MAC-A","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0923","A")
+                         "DEV-BKP-A","ORB4DEV_MAC-A","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0524","A")
 configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX Backup vNIC side B",
-                         "DEV-BKP-B","ORB4_MAC-B","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0923","B")
-configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side A",
-                         "DEV-DATA-A","ORB4_MAC-A","9000","NFS","CDP-ENA-LNK-DOWN","DATA_0922","A")
-configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side B",
-                         "DEV-DATA-B","ORB4_MAC-B","9000","NFS","CDP-ENA-LNK-DOWN","DATA_0922","B")
+                         "DEV-BKP-B","ORB4DEV_MAC-B","9000","BKP","CDP-ENA-LNK-DOWN","BACKUP_0524","B")
+#configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side A",
+#                         "DEV-DATA-A","ORB4_MAC-A","9000","NFS","CDP-ENA-LNK-DOWN","DATA_0922","A")
+#configure_vnic_templates(handle, "ORB4ESX","vNIC Template for PROD Tower ESX NFS vNIC side B",
+#                         "DEV-DATA-B","ORB4_MAC-B","9000","NFS","CDP-ENA-LNK-DOWN","DATA_0922","B")
 
 
 
@@ -286,7 +333,7 @@ configure_san_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   switch_side="B",
                                   vHBA_order="2",
                                   adapter_profile="VMWare",
-                                  wwpn_pool="ORB4-WWPN-B",
+                                  wwpn_pool="ORB4DEV-WWPN-B",
                                   qos_pol="FC",
                                   wwnn_pool_name="ORB4-WWNN")
 
@@ -297,7 +344,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="MGMT vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4DEV-MAC-A",
                                   qos_pol="MGMT",
                                   vnic_order="3")
 
@@ -309,7 +356,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="vMotion vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4DEV-MAC-A",
                                   qos_pol="VMOTION",
                                   vnic_order="4")
 
@@ -320,7 +367,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="App vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
+                                  mac_pool="ORB4DEV-MAC-A",
                                   qos_pol="APP",
                                   vnic_order="5")
 
@@ -332,8 +379,8 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="Production Backup vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="A",
-                                  mac_pool="ORB4ESX-MAC-A",
-                                  qos_pol="NFS",
+                                  mac_pool="ORB4DEV-MAC-A",
+                                  qos_pol="BKP",
                                   vnic_order="6")
 
 
@@ -344,7 +391,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="MGMT vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4DEV-MAC-B",
                                   qos_pol="MGMT",
                                   vnic_order="7")
 
@@ -355,7 +402,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="vMotion vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4DEV-MAC-B",
                                   qos_pol="VMOTION",
                                   vnic_order="8")
 
@@ -366,7 +413,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="App vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4DEV-MAC-B",
                                   qos_pol="APP",
                                   vnic_order="10")
 configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
@@ -376,7 +423,7 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   description="Backup vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
-                                  mac_pool="ORB4ESX-MAC-B",
+                                  mac_pool="ORB4DEV-MAC-B",
                                   qos_pol="BKP",
                                   vnic_order="11")
 

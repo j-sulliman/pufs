@@ -223,7 +223,7 @@ def configure_mac_pools(handle, org, description, name, mac_from, mac_to):
 
 
 def configure_ip_pools(handle, org, description, name, ip_from, ip_to, ip_gw = "10.233.178.1",
-                       assignment_ordr = "sequential", ip_subnet="255.255.255.128", dns_prim='10.46.116.13',
+                       assignment_ordr = "sequential", ip_subnet="255.255.255.0", dns_prim='10.46.116.13',
                        dns_sec="10.50.116.14"):
     from ucsmsdk.mometa.ippool.IppoolPool import IppoolPool
     from ucsmsdk.mometa.ippool.IppoolBlock import IppoolBlock
