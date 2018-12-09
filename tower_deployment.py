@@ -4,7 +4,7 @@ from ucs_main import configure_bios_policy, configure_scrub_policy, configure_ip
 from ucs_main import configure_cdp_pol, configure_vsans, configure_wwnn_pools, configure_wwpn_pools
 from ucs_main import configure_vhba_templates, configure_vnic_templates, configure_vlans, configure_app_vnic_template
 from ucs_main import configure_service_profile_template, configure_lan_connectivity_policy
-from ucs_main import configure_san_connectivity_policy, create_sp_from_template, ucs_logon
+from ucs_main import configure_san_connectivity_policy, create_sp_from_template, ucs_logon, configure_sol_policy
 
 
 handle = ucs_logon(ip_addr="192.168.2.114", usr="ucspe", pw="ucspe")
@@ -26,10 +26,12 @@ configure_mac_pools(handle, "ORB4ESX","DEV TOWER MAC Pool for Fabric A","ORB4DEV
                     "00:25:B5:2A:00:FF")
 configure_mac_pools(handle, "ORB4ESX","DEV TOWER MAC Pool for Fabric B","ORB4DEV_MAC-B","00:25:B5:2B:00:00",
                     "00:25:B5:2B:00:FF")
-
+configure_sol_policy(handle, org="ORB4ESX", name="SOL-POL", descr="Serial Over LAN Policy for Tower c240 Servers",
+                     baud_speed="115200")
 configure_uuid_pool(handle,'ORB4ESX',"ORB4ESX-UUID","UUID Pool for Tower ESX","sequential",
                     "0000-000000000256","0000-000000000001")
 configure_maint_policy(handle, org="ORB4ESX",name="USER-ACK-MAINT",reboot_pol="user-ack", descr="User Ack")
+
 configure_host_fw_policy(handle, org="ORB4ESX",name="FW-3.2.3i",descr="3.2.3i")
 configure_boot_policy(handle, "ORB4ESX","CDROM","Boot Policy for Tower ESX")
 configure_local_disk_conf_policy(handle, "ORB4ESX", "INT-CARD", "Local Disk Policy for Tower ESX")
@@ -270,7 +272,7 @@ configure_service_profile_template(handle, name="ORB4ESX-PRD",
                                    mgmt_fw_policy_name="",
                                    power_policy_name="default",
                                    scrub_policy_name="BIOS-SCRUB",
-                                   sol_policy_name="",
+                                   sol_policy_name="SOL-POL",
                                    stats_policy_name="default",
                                    vmedia_policy_name="",
                                    org="ORB4ESX"
@@ -450,7 +452,7 @@ configure_service_profile_template(handle, name="ORB4ESX-DEV",
                                    mgmt_fw_policy_name="",
                                    power_policy_name="default",
                                    scrub_policy_name="BIOS-SCRUB",
-                                   sol_policy_name="",
+                                   sol_policy_name="SOL-POL",
                                    stats_policy_name="default",
                                    vmedia_policy_name="",
                                    org="ORB4ESX"

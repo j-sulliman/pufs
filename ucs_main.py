@@ -116,6 +116,23 @@ def configure_bios_policy(handle, org, name, descr, quiet_boot = 'disabled'):
         print(Fore.YELLOW + 'Error: {}, BIOS Policy {}. '.format(err, name))
 
 
+def configure_sol_policy(handle, org, name, descr, baud_speed='115200'):
+    from ucsmsdk.mometa.sol.SolPolicy import SolPolicy
+
+    mo = SolPolicy(admin_state='enable',
+                   descr=descr,
+                   parent_mo_or_dn="org-root/org-{}".format(org),
+                   name=name,
+                   speed=baud_speed)
+    handle.add_mo(mo)
+
+    try:
+        handle.commit()
+        print(Fore.GREEN + 'Serial Over LAN Policy {} configured'.format(name))
+    except Exception, err:
+        print(Fore.YELLOW + 'Error: {}, Serial Over LAN Policy {}. '.format(err, name))
+
+
 def configure_scrub_policy(handle, org, name, descr):
     from ucsmsdk.mometa.compute.ComputeScrubPolicy import ComputeScrubPolicy
 
