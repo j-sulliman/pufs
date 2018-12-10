@@ -6,7 +6,6 @@ from ucs_main import configure_vhba_templates, configure_vnic_templates, configu
 from ucs_main import configure_service_profile_template, configure_lan_connectivity_policy
 from ucs_main import configure_san_connectivity_policy, create_sp_from_template, ucs_logon, configure_sol_policy
 
-
 handle = ucs_logon(ip_addr="192.168.2.114", usr="ucspe", pw="ucspe")
 
 twr_data_vlans = ['114', '116', '118', '119', '216', '218', '306', '307', '400', '401', '402', '404', '405', '406',
@@ -411,23 +410,23 @@ configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
 configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   vnic_template_name="DEV-DATA-B",
                                   name="ORB4DEV-CON",
-                                  vnic_name="vNIC8",
+                                  vnic_name="vNIC7",
                                   description="App vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
                                   mac_pool="ORB4DEV-MAC-B",
                                   qos_pol="APP",
-                                  vnic_order="10")
+                                  vnic_order="9")
 configure_lan_connectivity_policy(handle, organisation="org-root/org-ORB4ESX",
                                   vnic_template_name="DEV-BKP-B",
                                   name="ORB4DEV-CON",
-                                  vnic_name="vNIC9",
+                                  vnic_name="vNIC8",
                                   description="Backup vNIC",
                                   nw_control_pol="CDP-ENA-LNK-DOWN",
                                   switch_side="B",
                                   mac_pool="ORB4DEV-MAC-B",
                                   qos_pol="BKP",
-                                  vnic_order="11")
+                                  vnic_order="10")
 
 
 configure_service_profile_template(handle, name="ORB4ESX-DEV",

@@ -658,3 +658,11 @@ def configure_service_profile_template(handle, name, type, resolve_remote, descr
         handle.add_mo(mo, True)
         handle.commit()
         print(Fore.YELLOW + 'Error: {}, Service Profile Template {}.  Modifying object '.format(err, name))
+
+
+def query_ucs_class(handle, ucs_class='computeRackUnit', children='False'):
+    if children == 'True':
+        object_array = handle.query_classid(ucs_class, hierarchy=True)
+    elif children == 'False':
+        object_array = handle.query_classid(ucs_class, hierarchy=False)
+    return object_array
