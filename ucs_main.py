@@ -1,19 +1,18 @@
 from ucsmsdk.ucshandle import UcsHandle
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
-'''
-def ucs_logon(ip_addr="192.168.2.23", usr="ucspe", pw="ucspe"):
+def ucs_logon(ip_addr="192.168.2.117", usr="ucspe", pw="ucspe"):
     handle = UcsHandle(ip_addr, usr, pw, port=443, secure=True)
     handle.get_auth_token()
     handle.login(auto_refresh=True)
     return handle
 
 '''
-def ucs_logon(ip_addr="192.168.2.23", usr="ucspe", pw="ucspe"):
+def ucs_logon(ip_addr="192.168.2.117", usr="ucspe", pw="ucspe"):
     handle = UcsHandle(ip_addr, usr, pw)
     handle.login(auto_refresh=True)
     return handle
-
+'''
 
 #handle.process_xml_elem(elem=ucsmethodfactory.config_find_dns_by_class_id(cookie=handle.cookie, class_id="LsServer",
 #                                                                          in_filter=None))

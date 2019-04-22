@@ -6,7 +6,7 @@ from ucs_main import configure_vhba_templates, configure_vnic_templates, configu
 from ucs_main import configure_service_profile_template, configure_lan_connectivity_policy
 from ucs_main import configure_san_connectivity_policy, create_sp_from_template, ucs_logon, configure_sol_policy
 
-handle = ucs_logon(ip_addr="192.168.2.114", usr="ucspe", pw="ucspe")
+handle = ucs_logon(ip_addr="192.168.2.117", usr="ucspe", pw="ucspe")
 
 twr_data_vlans = ['114', '116', '118', '119', '216', '218', '306', '307', '400', '401', '402', '404', '405', '406',
                   '408', '420', '430', '431', '450', '451', '454', '460', '461', '462', '464', '470', '471', '474',
@@ -459,7 +459,6 @@ configure_service_profile_template(handle, name="ORB4ESX-DEV",
 
 create_sp_from_template(handle, start_sp_value=01, sp_quantity=4,sp_name_prefix="ORB4ESX",org="ORB4ESX",
                         template_name="ORB4ESX-PRD")
-
 
 
 create_sp_from_template(handle, start_sp_value=05, sp_quantity=2,sp_name_prefix="ORB4ESX",org="ORB4ESX",
