@@ -1,0 +1,2874 @@
+[------------- Sending Request to Server ------------
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-3/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-3/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<configEstimateImpact
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269">
+    <inConfigs>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios">
+    <biosVProfile
+    descr="yep"
+    name="test-bios"
+    rebootOnUpdate="yes"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios"
+
+    status="created"
+
+    sacl="addchild,del,mod">
+    </biosVProfile>
+</pair>
+    </inConfigs>
+</configEstimateImpact>
+
+<configConfMos
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+    <inConfigs>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios">
+    <biosVProfile
+    descr="yep"
+    name="test-bios"
+    rebootOnUpdate="yes"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios"
+
+    status="created"
+
+    sacl="addchild,del,mod">
+    </biosVProfile>
+</pair>
+    </inConfigs>
+</configConfMos>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-3/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-3/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<configResolveDn
+dn="sys"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configScope
+dn="org-root/org-ORB4ESX/bios-prof-test-bios"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inClass="biosTokenParam"
+inHierarchical="false"
+inRecursive="true">
+    <inFilter>
+    </inFilter>
+</configScope>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB System Idle Power Optimizing Setting/tokn-param-USBIdlePowerOptimize"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-DCPMM Firmware Downgrade Configuration/tokn-param-DCPMMFirmwareDowngrade"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel Trusted Execution Technology/tokn-param-TXTSupport"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Integrated Graphics Aperture Size/tokn-param-IGDAperture"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel Virtualization Technology/tokn-param-IntelVT"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OS Boot Watchdog Timer Timeout/tokn-param-OSBootWatchdogTimerTimeout"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Energy Configuration/tokn-param-CPUPowerManagement"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Energy Configuration/tokn-param-CpuEngPerfBias"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Energy Configuration/tokn-param-EPPProfile"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IntelSpeedSelect Configuration/tokn-param-IntelSpeedSelect"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-SelectMemory RAS configuration/tokn-param-SelectMemoryRAS"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OS Boot Watchdog Timer Policy/tokn-param-OSBootWatchdogTimerPolicy"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-CPU Hardware Power Management/tokn-param-CpuHWPM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Enhanced PowerCapping Support/tokn-param-EnhancedPowerCapping"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OptionROM Launch Optimization/tokn-param-CiscoOpromLaunchOptimization"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Enhanced Intel SpeedStep Tech/tokn-param-EnhancedIntelSpeedStep"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI LOM Ports Configuration/tokn-param-PcieLOM2Link"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB Front Panel Access Lock/tokn-param-USBFrontPanelLock"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel entry SAS RAID module/tokn-param-ConfigSASRaidModule"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel entry SAS RAID module/tokn-param-IntelSASRaidConfig"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Redirection After BIOS POST/tokn-param-RedirectionAfterPOST"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Memory mapped IO above 4GB/tokn-param-MemoryMappedIOAbove4GB"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-QPI Link Frequency Select/tokn-param-QPILinkFrequency"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel HyperThreading Tech/tokn-param-IntelHyperThread"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Max Variable MTRR Setting/tokn-param-ProcessorMtrr"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Energy Performance Tuning/tokn-param-PwrPerfTuning"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-AdjacentCacheLinePrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-DcuStreamerPrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-HardwarePrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-DcuIpPrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-XPTPrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-KTIPrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config/tokn-param-LLCPrefetch"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme1OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme3OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme2OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme5OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme4OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme7OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme6OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRearNvme8OptionRom"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotMRAIDOptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU6OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU7OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU4OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU5OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU3OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotMLOMOptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotRAIDOptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotGPU8OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN19OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN18OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotSASOptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN13OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN20OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN12OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN21OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN22OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN11OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN23OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN10OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN17OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN24OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN16OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN15OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotHBAOptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN14OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot14OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN8OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN9OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot10OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot11OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot12OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot13OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN3OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN6OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN7OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN4OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlotN5OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot5OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot4OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot7OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot6OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot3OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-SIOCNvme1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-SIOCNvme2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot9OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-PcieSlot8OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-SBMezz2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot OptionROM Enable/tokn-param-SBNVMe2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-UEFI OS use legacy video/tokn-param-EFIOSUseLegacyVideo"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Interleave Configuration/tokn-param-ChannelInterLeave"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Interleave Configuration/tokn-param-MemoryInterLeave"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Interleave Configuration/tokn-param-RankInterLeave"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Interleave Configuration/tokn-param-IMCInterleave"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Interleave Configuration/tokn-param-SNC"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Adaptive Memory Training/tokn-param-CiscoAdaptiveMemTraining"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Frequency Floor Override/tokn-param-CpuFreqFloor"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel VT for directed IO/tokn-param-CoherencySupport"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel VT for directed IO/tokn-param-InterruptRemap"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel VT for directed IO/tokn-param-PassThroughDMA"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel VT for directed IO/tokn-param-IntelVTD"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel VT for directed IO/tokn-param-ATS"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Maximum memory below 4GB/tokn-param-MaxMemoryBelow4GB"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Resume on AC power loss/tokn-param-ResumeOnACPowerLoss"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlSlot14"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlSlot13"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlSlot12"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlSlot11"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu8"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu7"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu6"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu5"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu4"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu3"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu2"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Access Control Services/tokn-param-ACSCtlGpu1"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Trusted Platform Module/tokn-param-TPMControl"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Out of Band Management/tokn-param-comSpcrEnable"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OS Boot Watchdog Timer/tokn-param-OSBootWatchdogTimer"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Workload Configuration/tokn-param-WorkLdConfig"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-DDR3 Voltage Selection/tokn-param-Ddr3VoltageSelection"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbPortSdCard"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbPortVMedia"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbPortFront"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbPortRear"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbEmul6064"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbPortInt"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB port configuration/tokn-param-UsbPortKVM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel Turbo Boost Tech/tokn-param-EnergyEfficientTurbo"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel Turbo Boost Tech/tokn-param-IntelTurboBoostTech"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard LOM Option ROM/tokn-param-LomOpromControlPort1"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard LOM Option ROM/tokn-param-LomOpromControlPort0"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard LOM Option ROM/tokn-param-AllLomPortControl"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard LOM Option ROM/tokn-param-SBLom1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard LOM Option ROM/tokn-param-CdnSupport"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Package C State Limit/tokn-param-PackageCstateLimit"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-DRAM Clock Throttling/tokn-param-DRAMClockThrottling"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-P STATE Coordination/tokn-param-PsdCoordType"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Core MultiProcessing/tokn-param-CoreMultiProcessing"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Serial port A enable/tokn-param-Serial-PortA"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Front panel lockout/tokn-param-FrontPanelLock"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C3 Report/tokn-param-ProcessorC3Report"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Execute Disable Bit/tokn-param-ExecuteDisable"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C6 Report/tokn-param-ProcessorC6Report"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C7 Report/tokn-param-ProcessorC7Report"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Direct Cache Access/tokn-param-DirectCacheAccess"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Integrated Graphics/tokn-param-IGDSupport"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection/tokn-param-PuttyFunctionKeyPad"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection/tokn-param-LegacyOSRedir"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection/tokn-param-ConsoleRedir"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection/tokn-param-TerminalType"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection/tokn-param-FlowCtrl"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection/tokn-param-BaudRate"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot12LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot11LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot10LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot3LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot6LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot7LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot4LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot5LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot8LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-PcieSlot9LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SIOCNVMe2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SIOCNVMe1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-IOEMezz1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-IOENVMe2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-IOENVMe1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-IOESlot2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-IOESlot1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SBMezz1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SBMezz2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SBNVMe1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SBNVMe2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SIOC2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot Link Speed/tokn-param-SIOC1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotFrontNvme2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotFrontNvme1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotRearNvme2LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotRearNvme1LinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotMRAIDLinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotMLOMLinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotRAIDLinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PcieSlotHBALinkSpeed"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed/tokn-param-PowerOnPassword"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-BME DMA Mitigation/tokn-param-BmeDmaMitigation"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-BIOS Techlog Level/tokn-param-CiscoDebugLevel"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Assert NMI on PERR/tokn-param-AssertNMIOnPERR"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Assert NMI on SERR/tokn-param-AssertNMIOnSERR"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IOESlot2 OptionROM/tokn-param-IOESlot2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IOESlot1 OptionROM/tokn-param-IOESlot1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IOENVMe2 OptionROM/tokn-param-IOENVMe2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IOENVMe1 OptionROM/tokn-param-IOENVMe1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IOEMezz1 OptionROM/tokn-param-IOEMezz1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Boot option retry/tokn-param-BootOptionRetry"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Boot option retry/tokn-param-BORNumRetry"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Boot option retry/tokn-param-BORCoolDown"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB Configuration/tokn-param-PchUsb30Mode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Dram Refresh Rate/tokn-param-DramRefreshRate"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C State/tokn-param-ProcessorCstate"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C State/tokn-param-AutoCCState"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-SBNVMe1 OptionROM/tokn-param-SBNVMe1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-SBMezz1 OptionROM/tokn-param-SBMezz1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard Graphics/tokn-param-OnboardGraphics"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-POST error pause/tokn-param-POSTErrorPause"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-All USB Devices/tokn-param-AllUsbDevices"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB Boot Config/tokn-param-MakeUSBDeviceNonBootable"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-USB Boot Config/tokn-param-UsbLegacySupport"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard Storage/tokn-param-DisableSCU"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-CPU Performance/tokn-param-BootPerformanceMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-CPU Performance/tokn-param-CPUPerformance"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-SIOC2 OptionROM/tokn-param-SIOC2OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-SIOC1 OptionROM/tokn-param-SIOC1OptionROM"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-VMD Enablement/tokn-param-VMDEnable"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-ACPI10 Support/tokn-param-ACPI10Support"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-LvDIMM Support/tokn-param-LvDDRMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Scrub Policies/tokn-param-PatrolScrub"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Scrub Policies/tokn-param-DemandScrub"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-QPI Snoop Mode/tokn-param-QpiSnoopMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Mirroring Mode/tokn-param-MirroringMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-NUMA optimized/tokn-param-NUMAOptimize"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor CMCI/tokn-param-ProcessorCMCI"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCH SATA Mode/tokn-param-pSATA"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Local X2 Apic/tokn-param-LocalX2Apic"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C1E/tokn-param-ProcessorC1E"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-VGA Priority/tokn-param-VgaPriority"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-ASPM Support/tokn-param-AspmSupport"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Sparing Mode/tokn-param-SparingMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-FRB 2 Timer/tokn-param-FRB-2"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI ROM CLP/tokn-param-PCIROMCLP"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnMemMapBankInterleaveDdr4"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnMemCtrlBankGroupSwapDdr4"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnCpuL2StreamHwPrefetcher"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnCpuL1StreamHwPrefetcher"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnCpuGlobalCstateCtrl"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnCpuGenDowncoreCtrl"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnDeterminismSlider"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsDfCmnMemIntlvSize"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsDfCmnMemIntlv"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnGnbNbIOMMU"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmncTDPCtl"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-CbsCmnCpuCpb"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-SvmMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-SmtMode"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor/tokn-param-SMEE"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Altitude/tokn-param-Altitude"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveChildren
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+classId="biosTokenSettings"
+inDn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PXE BOOT/tokn-param-IPV6PXE"
+inHierarchical="false">
+    <inFilter>
+    </inFilter>
+</configResolveChildren>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Consistent Device Name Control"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Resume on AC power loss"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Front panel lockout"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-POST error pause"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-6/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-6/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-6/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inDn="sys/chassis-6/blade-1"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-DCPMM Firmware Downgrade Configuration"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel Virtualization Technology"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Energy Configuration"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-IntelSpeedSelect Configuration"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-CPU Hardware Power Management"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Enhanced Intel SpeedStep Tech"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel HyperThreading Tech"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Max Variable MTRR Setting"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Energy Performance Tuning"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor Prefetch Config"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Interleave Configuration"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Frequency Floor Override"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Workload Configuration"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel Turbo Boost Tech"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Package C State Limit"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-DRAM Clock Throttling"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-P STATE Coordination"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Core MultiProcessing"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C3 Report"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Execute Disable Bit"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C6 Report"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C7 Report"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Direct Cache Access"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C State"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-CPU Performance"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Scrub Policies"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor CMCI"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Local X2 Apic"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor C1E"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Processor"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Altitude"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OptionROM Launch Optimization"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Intel entry SAS RAID module"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Adaptive Memory Training"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCI Slot LINK Speed"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-BIOS Techlog Level"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Boot option retry"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Onboard Storage"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PCH SATA Mode"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-PXE BOOT"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OS Boot Watchdog Timer Timeout"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OS Boot Watchdog Timer Policy"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Redirection After BIOS POST"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Out of Band Management"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-OS Boot Watchdog Timer"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Console redirection"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Assert NMI on PERR"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Assert NMI on SERR"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configResolveDn
+dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-FRB 2 Timer"
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+</configResolveDn>
+
+<configEstimateImpact
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269">
+    <inConfigs>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Enabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Enabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Enabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Disabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Disabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Disabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-POST error pause/tokn-param-POSTErrorPause/tokn-setng-Enabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Enabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-POST error pause/tokn-param-POSTErrorPause/tokn-setng-Enabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable/tokn-setng-Enabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Enabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable/tokn-setng-Enabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+    </inConfigs>
+</configEstimateImpact>
+
+<configConfMos
+cookie="1596598652/f8ab148d-6c3d-45a1-b9f2-c0d09c1b0269"
+inHierarchical="false">
+    <inConfigs>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Enabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Enabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Enabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Disabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Disabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Quiet Boot/tokn-param-QuietBoot/tokn-setng-Disabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-POST error pause/tokn-param-POSTErrorPause/tokn-setng-Enabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Enabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-POST error pause/tokn-param-POSTErrorPause/tokn-setng-Enabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+<pair key="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable/tokn-setng-Enabled">
+    <biosTokenSettings
+    isAssigned="yes"
+    settingsMoRn="Enabled"
+    dn="org-root/org-ORB4ESX/bios-prof-test-bios/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable/tokn-setng-Enabled"
+
+    status="created,modified"
+
+    sacl="addchild,del,mod">
+    </biosTokenSettings>
+</pair>
+    </inConfigs>
+</configConfMos>
+-----------------------------------------------------]

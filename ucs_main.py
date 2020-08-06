@@ -1,38 +1,37 @@
 from ucsmsdk.ucshandle import UcsHandle
 from colorama import Fore, Back, Style, init
+from ucsmsdk.ucsexception import UcsException
+import argparse
+import sys
 init(autoreset=True)
-def ucs_logon(ip_addr="192.168.2.117", usr="ucspe", pw="ucspe"):
+
+parser = argparse.ArgumentParser(description='Configure UCS from spreadsheet')
+parser.add_argument('-a', help='UCSM IP (a)ddress (not URL)',type=str,
+                    required=True)
+parser.add_argument('-u', help='UCSM (u)ser name',type=str, required=True)
+parser.add_argument('-p', help='UCSM (p)assword',type=str, required=True)
+parser.add_argument('-f', help='Excel Spreadsheet File Name and Path',type=str,
+                    required=False)
+args = parser.parse_args()
+
+def ucs_logon(ip_addr=args.a, usr=args.u, pw=args.p):
     handle = UcsHandle(ip_addr, usr, pw, port=443, secure=True)
     handle.get_auth_token()
     handle.login(auto_refresh=True)
+    print('Connecting to {}')
     return handle
-
-'''
-def ucs_logon(ip_addr="192.168.2.117", usr="ucspe", pw="ucspe"):
-    handle = UcsHandle(ip_addr, usr, pw)
-    handle.login(auto_refresh=True)
-    return handle
-'''
-
-#handle.process_xml_elem(elem=ucsmethodfactory.config_find_dns_by_class_id(cookie=handle.cookie, class_id="LsServer",
-#                                                                          in_filter=None))
-
-#fcpool_filter = '(assigned, "yes", type="eq")'
-#data = handle.query_classid(class_id="fcpoolInitiator", filter_str=fcpool_filter)
 
 
 def configure_organisation(handle, name):
     from ucsmsdk.mometa.org.OrgOrg import OrgOrg
     mo = OrgOrg(parent_mo_or_dn="org-root", name=name)
     handle.add_mo(mo)
-
     try:
         handle.commit()
         print(Fore.GREEN + 'Organisation {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Organisation {}. '.format(err, name))
-        #data = handle.set_dump_xml()
-        #print(data)
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}  Organisation {}, not configured. '.format(UcsException, name))
+
 
 
 def configure_uuid_pool(handle, org, name, descr, assgn_order, uuid_to, uuid_from, pref = 'derived'):
@@ -46,14 +45,13 @@ def configure_uuid_pool(handle, org, name, descr, assgn_order, uuid_to, uuid_fro
     mo_1 = UuidpoolBlock(parent_mo_or_dn=mo, to=uuid_to, r_from=uuid_from)
     handle.add_mo(mo)
 
+
     try:
         handle.commit()
-        print(Fore.GREEN + 'UUID {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, UUID {}. '.format(err, name))
+        print(Fore.GREEN + 'Organisation {} configured'.format(name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}  Organisation {}, not configured. '.format(UcsException, name))
 
-        #data = handle.set_dump_xml()
-        #print(data)
 
 
 def configure_boot_policy(handle, org, name, descr):
@@ -74,8 +72,8 @@ def configure_boot_policy(handle, org, name, descr):
     try:
         handle.commit()
         print(Fore.GREEN + 'Boot Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Boot Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, Boot Policy {}. '.format(UcsException, name))
 
 def configure_local_disk_conf_policy(handle, org, name, descr):
     from ucsmsdk.mometa.storage.StorageLocalDiskConfigPolicy import StorageLocalDiskConfigPolicy
@@ -88,31 +86,54 @@ def configure_local_disk_conf_policy(handle, org, name, descr):
     try:
         handle.commit()
         print(Fore.GREEN + 'Local Disk Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Local Disk Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, Local Disk Policy {}. '.format(UcsException, name))
 
 def configure_bios_policy(handle, org, name, descr, quiet_boot = 'disabled'):
-    from ucsmsdk.mometa.bios.BiosVProfile import BiosVProfile
-    from ucsmsdk.mometa.bios.BiosVfConsistentDeviceNameControl import BiosVfConsistentDeviceNameControl
-    from ucsmsdk.mometa.bios.BiosVfFrontPanelLockout import BiosVfFrontPanelLockout
-    from ucsmsdk.mometa.bios.BiosVfPOSTErrorPause import BiosVfPOSTErrorPause
-    from ucsmsdk.mometa.bios.BiosVfQuietBoot import BiosVfQuietBoot
-    from ucsmsdk.mometa.bios.BiosVfResumeOnACPowerLoss import BiosVfResumeOnACPowerLoss
+    ##### Start-Of-PythonScript #####
 
-    mo = BiosVProfile(parent_mo_or_dn="org-root/org-{}".format(org), policy_owner="local", name=name, descr=descr,
-                      reboot_on_update="no")
-    mo_1 = BiosVfConsistentDeviceNameControl(parent_mo_or_dn=mo, vp_cdn_control="platform-default")
-    mo_2 = BiosVfFrontPanelLockout(parent_mo_or_dn=mo, vp_front_panel_lockout="disabled")
-    mo_3 = BiosVfPOSTErrorPause(parent_mo_or_dn=mo, vp_post_error_pause="platform-default")
-    mo_4 = BiosVfQuietBoot(parent_mo_or_dn=mo, vp_quiet_boot=quiet_boot)
-    mo_5 = BiosVfResumeOnACPowerLoss(parent_mo_or_dn=mo, vp_resume_on_ac_power_loss="platform-default")
+    from ucsmsdk.mometa.bios.BiosVProfile import BiosVProfile
+
+    mo = BiosVProfile(parent_mo_or_dn="org-root/org-{}".format(org), descr=descr, name=name, reboot_on_update="yes")
     handle.add_mo(mo)
+
+    handle.commit()
+    ##### End-Of-PythonScript #####
+    ##### Start-Of-PythonScript #####
+
+    from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
+
+    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Quiet Boot/tokn-param-QuietBoot".format(org, name),
+     is_assigned="yes", settings_mo_rn="Enabled")
+    handle.add_mo(mo, True)
+
+
+    from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
+
+    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Quiet Boot/tokn-param-QuietBoot".format(org, name),
+        is_assigned="yes", settings_mo_rn="Disabled")
+    handle.add_mo(mo, True)
+
+
+    from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
+
+    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-POST error pause/tokn-param-POSTErrorPause".format(org, name),
+        is_assigned="yes", settings_mo_rn="Enabled")
+    handle.add_mo(mo, True)
+
+
+    from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
+
+    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable".format(org, name),
+        is_assigned="yes", settings_mo_rn="Enabled")
+    handle.add_mo(mo, True)
+
 
     try:
         handle.commit()
         print(Fore.GREEN + 'BIOS Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, BIOS Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, BIOS Policy {}. '.format(UcsException, name))
 
 
 def configure_sol_policy(handle, org, name, descr, baud_speed='115200'):
@@ -128,8 +149,8 @@ def configure_sol_policy(handle, org, name, descr, baud_speed='115200'):
     try:
         handle.commit()
         print(Fore.GREEN + 'Serial Over LAN Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Serial Over LAN Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, Serial Over LAN Policy {}. '.format(UcsException, name))
 
 
 def configure_scrub_policy(handle, org, name, descr):
@@ -142,8 +163,8 @@ def configure_scrub_policy(handle, org, name, descr):
     try:
         handle.commit()
         print(Fore.GREEN + 'Scrub Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Scrub Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, Scrub Policy {}. '.format(UcsException, name))
 
 
 def configure_maint_policy(handle, org, name='', reboot_pol="user-ack", descr=''):
@@ -157,8 +178,8 @@ def configure_maint_policy(handle, org, name='', reboot_pol="user-ack", descr=''
     try:
         handle.commit()
         print(Fore.GREEN + 'Scrub Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Maintenance Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, Maintenance Policy {}. '.format(UcsException, name))
 
 def create_sp_from_template(handle, start_sp_value=611, sp_quantity=12, sp_name_prefix="csvipresx", org="AKL-VI-APP",
                             template_name="AKL-VI-APPLICATION_1"):
@@ -182,9 +203,13 @@ def configure_host_fw_policy(handle, org, name, descr):
     from ucsmsdk.mometa.firmware.FirmwareComputeHostPack import FirmwareComputeHostPack
     from ucsmsdk.mometa.firmware.FirmwareExcludeServerComponent import FirmwareExcludeServerComponent
 
-    mo = FirmwareComputeHostPack(parent_mo_or_dn="org-root/org-{}".format(org), ignore_comp_check="yes", name=name,
-                                 descr=descr, stage_size="0", rack_bundle_version="", update_trigger="immediate",
-                                 policy_owner="local", mode="staged", blade_bundle_version="",
+    mo = FirmwareComputeHostPack(parent_mo_or_dn="org-root/org-{}".format(org),
+                                 ignore_comp_check="yes", name=name,
+                                 descr=descr, stage_size="0",
+                                 rack_bundle_version="",
+                                 update_trigger="immediate",
+                                 policy_owner="local", mode="staged",
+                                 blade_bundle_version="",
                                  override_default_exclusion="yes")
     mo_1 = FirmwareExcludeServerComponent(parent_mo_or_dn=mo, server_component="local-disk")
     handle.add_mo(mo)
@@ -192,8 +217,8 @@ def configure_host_fw_policy(handle, org, name, descr):
     try:
         handle.commit()
         print(Fore.GREEN + 'Firmware Policy {} configured'.format(name))
-    except Exception, err:
-        print(Fore.YELLOW + 'Error: {}, Firmware Policy {}. '.format(err, name))
+    except UcsException:
+        print(Fore.YELLOW + 'Error: {}, Firmware Policy {}. '.format(UcsException, name))
 
 
 def configure_vlans(handle, vlan_id, vlan_name):
@@ -204,21 +229,21 @@ def configure_vlans(handle, vlan_id, vlan_name):
         vlan_id_cleaned = "00" + vlan_id
     else:
         vlan_id_cleaned = vlan_id
-    mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none", name="{}_{}".format(vlan_name, vlan_id_cleaned),
+    mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none",
+                    name="{}_{}".format(vlan_name, vlan_id_cleaned),
                     id=vlan_id_cleaned,
-                    mcast_policy_name="", policy_owner="local", default_net="no", pub_nw_name="",
+                    mcast_policy_name="", policy_owner="local",
+                    default_net="no", pub_nw_name="",
                     compression_type="included")
     handle.add_mo(mo)
+    #handle.commit()
+    #print(Fore.GREEN + 'VLAN {} configured'.format(vlan_id_cleaned))
 
     try:
         handle.commit()
         print(Fore.GREEN + 'VLAN {} configured'.format(vlan_id_cleaned))
-    except Exception, err:
-        if "103" in err:
-            print(Fore.YELLOW + 'Error: {}, VLAN {}. '.format(err, vlan_id_cleaned))
-        else:
-            print(Fore.YELLOW + 'Error: {}, VLAN {}. '.format(err, vlan_id_cleaned))
-
+    except:
+        print(Fore.YELLOW + 'Error: VLAN {}, {}. '.format(vlan_id_cleaned, sys.exc_info()[1]))
 
 
 
@@ -234,8 +259,8 @@ def configure_mac_pools(handle, org, description, name, mac_from, mac_to):
     try:
         handle.commit()
         print(Fore.GREEN + 'MAC Pool {} configured'.format(name))
-    except Exception, err:
-        print(Fore.RED + 'Error: {}, MAC Pool {}. '.format(err, name))
+    except UcsException:
+        print(Fore.RED + 'Error: {}, MAC Pool {}. '.format(UcsException.error_code, name))
 
 
 def configure_ip_pools(handle, org, description, name, ip_from, ip_to, ip_gw = "10.233.178.1",
@@ -283,8 +308,11 @@ def configure_cdp_pol(handle, org, description, name):
     from ucsmsdk.mometa.nwctrl.NwctrlDefinition import NwctrlDefinition
     from ucsmsdk.mometa.dpsec.DpsecMac import DpsecMac
 
-    mo = NwctrlDefinition(parent_mo_or_dn="org-root/org-{}".format(org), lldp_transmit="disabled", name=name,
-                          lldp_receive="disabled", mac_register_mode="only-native-vlan", policy_owner="local",
+    mo = NwctrlDefinition(parent_mo_or_dn="org-root/org-{}".format(org),
+                          lldp_transmit="disabled", name=name,
+                          lldp_receive="disabled",
+                          mac_register_mode="only-native-vlan",
+                          policy_owner="local",
                           cdp="enabled", uplink_fail_action="link-down", descr=description)
     mo_1 = DpsecMac(parent_mo_or_dn=mo, forge="allow", policy_owner="local", name="", descr="")
     handle.add_mo(mo)
@@ -343,25 +371,27 @@ def configure_wwpn_pools(handle, org, description, name, wwpn_from, wwpn_to, ass
         #data = handle.set_dump_xml()
         #print(data)
 
+
+
 def configure_vsans(handle, name='',
                     vsan_id='1280',
                     fabric='A'):
     from ucsmsdk.mometa.fabric.FabricVsan import FabricVsan
 
     mo = FabricVsan(parent_mo_or_dn="fabric/san/{}".format(fabric),
-                    name=name,
-                    fcoe_vlan=vsan_id,
+                    name=str(name),
+                    fcoe_vlan=str(vsan_id),
                     policy_owner="local",
                     fc_zone_sharing_mode="coalesce",
                     zoning_state="disabled",
-                    id=vsan_id)
+                    id=str(vsan_id))
     handle.add_mo(mo)
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'VSAN {} configured'.format(name))
-    except Exception, err:
-        print(Fore.RED + 'Error: {}, VSAN {}. '.format(err, name))
+        print(Fore.GREEN + 'VSAN {} configured'.format(vsan_id))
+    except:
+        print(Fore.YELLOW + 'Error: VSAN {}, {}. '.format(vsan_id, sys.exc_info()[1]))
 
 
 def configure_vhba_templates(handle, org, description, name, wwpn_pool, vsan_name, fabric = 'A', qos_pol='VI-FC'):
@@ -525,10 +555,10 @@ def configure_san_connectivity_policy(handle, organisation = "org-root/org-AKL-V
         handle.add_mo(mo)
         handle.commit()
         print(Fore.GREEN + 'SAN Connectivity Policy {} configured'.format(name))
-    except Exception, err:
+    except UcsException:
         handle.add_mo(mo, True)
         handle.commit()
-        print(Fore.RED + 'Error: {}, SAN Connectivity Policy {}. '.format(err, name))
+        print(Fore.RED + 'Error: {}, SAN Connectivity Policy {}. '.format(UcsException, name))
 
 def configure_lan_connectivity_policy(handle, organisation = "org-root/org-AKL-VI-APP",
                                       vnic_template_name="AKL-VI-MGMT-A",
@@ -575,10 +605,10 @@ def configure_lan_connectivity_policy(handle, organisation = "org-root/org-AKL-V
         handle.add_mo(mo)
         handle.commit()
         print(Fore.GREEN + 'LAN Connectivity Policy {} configured'.format(name))
-    except Exception, err:
+    except UcsException:
         handle.add_mo(mo, True)
         handle.commit()
-        print(Fore.RED + 'Error: {}, LAN Connectivity Policy {}. '.format(err, name))
+        print(Fore.RED + 'Error: {}, LAN Connectivity Policy {}. '.format(UcsException, name))
 
 def configure_service_profile_template(handle, name, type, resolve_remote, descr="",
                        usr_lbl="", src_templ_name="", ext_ip_state="none",
@@ -653,10 +683,10 @@ def configure_service_profile_template(handle, name, type, resolve_remote, descr
         handle.add_mo(mo)
         handle.commit()
         print(Fore.GREEN + 'Service Profile Template {} configured'.format(name))
-    except Exception, err:
+    except UcsException:
         handle.add_mo(mo, True)
         handle.commit()
-        print(Fore.YELLOW + 'Error: {}, Service Profile Template {}.  Modifying object '.format(err, name))
+        print(Fore.YELLOW + 'Error: {}, Service Profile Template {}.  Modifying object '.format(UcsException, name))
 
 
 def query_ucs_class(handle, ucs_class='computeRackUnit', children='False'):

@@ -5,8 +5,18 @@ from ucs_main import configure_cdp_pol, configure_vsans, configure_wwnn_pools, c
 from ucs_main import configure_vhba_templates, configure_vnic_templates, configure_vlans, configure_app_vnic_template
 from ucs_main import configure_service_profile_template, configure_lan_connectivity_policy
 from ucs_main import configure_san_connectivity_policy, create_sp_from_template, ucs_logon, configure_sol_policy
+import argparse
 
-handle = ucs_logon(ip_addr="192.168.2.117", usr="ucspe", pw="ucspe")
+parser = argparse.ArgumentParser(description='Configure UCS from spreadsheet')
+parser.add_argument('-a', help='UCSM IP (a)ddress (not URL)',type=str,
+                    required=True)
+parser.add_argument('-u', help='UCSM (u)ser name',type=str, required=True)
+parser.add_argument('-p', help='UCSM (p)assword',type=str, required=True)
+parser.add_argument('-f', help='Excel Spreadsheet File Name and Path',type=str,
+                    required=False)
+args = parser.parse_args()
+
+handle = ucs_logon(ip_addr=args.a, usr=args.u, pw=args.p)
 
 twr_data_vlans = ['114', '116', '118', '119', '216', '218', '306', '307', '400', '401', '402', '404', '405', '406',
                   '408', '420', '430', '431', '450', '451', '454', '460', '461', '462', '464', '470', '471', '474',
@@ -55,19 +65,19 @@ configure_cdp_pol(handle, "ORB4ESX","Network Control Policy for Tower vNICs", "C
 configure_vsans(handle, name='ORB4-VSAN-A', vsan_id='1101', fabric='A')
 configure_vsans(handle, name='ORB4-VSAN-B', vsan_id='1102',fabric='B')
 configure_wwnn_pools(handle, org="org-root/org-ORB4ESX",wwnn_name="ORB4-WWNN",description="Auckland WWNN Pool",
-                     assignment_order="sequential",from_wwnn="20:00:20:25:B5:01:00:00",
-                     to_wwnn="20:00:20:25:B5:01:00:FF")
+                     assignment_order="sequential",from_wwnn="20:00:00:25:B5:01:00:00",
+                     to_wwnn="20:00:00:25:B5:01:00:FF")
 
 configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for PROD Tower ESX A Side (VSAN 1101)",
-                     name="ORB4PRD-WWPN-A", wwpn_from="20:00:2A:25:b5:01:0a:00", wwpn_to="20:00:2A:25:B5:01:0A:FF")
+                     name="ORB4PRD-WWPN-A", wwpn_from="20:00:00:25:b5:01:0a:00", wwpn_to="20:00:00:25:B5:01:0A:FF")
 configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for PROD Tower ESX B Side (VSAN 1102)",
-                     name="ORB4PRD-WWPN-B", wwpn_from="20:00:2B:25:b5:01:0b:00", wwpn_to="20:00:2B:25:B5:01:0b:FF")
+                     name="ORB4PRD-WWPN-B", wwpn_from="20:00:00:25:b5:01:0b:00", wwpn_to="20:00:00:25:B5:01:0b:FF")
 
 
 configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for DEV Tower ESX A Side (VSAN 1101)",
-                     name="ORB4DEV-WWPN-A", wwpn_from="20:00:2A:25:b5:01:1a:00", wwpn_to="20:00:2A:25:B5:01:1A:FF")
+                     name="ORB4DEV-WWPN-A", wwpn_from="20:00:00:25:b5:01:1a:00", wwpn_to="20:00:00:25:B5:01:1A:FF")
 configure_wwpn_pools(handle, org="ORB4ESX",description="WWPN Pool for DEV Tower ESX B Side (VSAN 1102)",
-                     name="ORB4DEV-WWPN-B", wwpn_from="20:00:2B:25:b5:01:1b:00", wwpn_to="20:00:2B:25:B5:01:1b:FF")
+                     name="ORB4DEV-WWPN-B", wwpn_from="20:00:00:25:b5:01:1b:00", wwpn_to="20:00:00:25:B5:01:1b:FF")
 
 
 configure_vlans(handle, "512", 'MGMT')
@@ -457,9 +467,9 @@ configure_service_profile_template(handle, name="ORB4ESX-DEV",
                                    org="ORB4ESX"
                                    )
 
-create_sp_from_template(handle, start_sp_value=01, sp_quantity=4,sp_name_prefix="ORB4ESX",org="ORB4ESX",
+create_sp_from_template(handle, start_sp_value=1, sp_quantity=4,sp_name_prefix="ORB4ESX",org="ORB4ESX",
                         template_name="ORB4ESX-PRD")
 
 
-create_sp_from_template(handle, start_sp_value=05, sp_quantity=2,sp_name_prefix="ORB4ESX",org="ORB4ESX",
+create_sp_from_template(handle, start_sp_value=5, sp_quantity=2,sp_name_prefix="ORB4ESX",org="ORB4ESX",
                         template_name="ORB4ESX-DEV")

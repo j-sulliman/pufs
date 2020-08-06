@@ -1,10 +1,11 @@
-from ucs_main import configure_organisation, configure_mac_pools,configure_uuid_pool, configure_maint_policy
+from ucs_main import configure_organisation, ucs_logon, configure_uuid_pool
+from ucs_main import configure_mac_pools, configure_maint_policy
 from ucs_main import configure_host_fw_policy, configure_boot_policy, configure_local_disk_conf_policy
 from ucs_main import configure_bios_policy, configure_scrub_policy, configure_ip_pools, configure_qos_policy
 from ucs_main import configure_cdp_pol, configure_vsans, configure_wwnn_pools, configure_wwpn_pools
 from ucs_main import configure_vhba_templates, configure_vnic_templates, configure_vlans, configure_app_vnic_template
 from ucs_main import configure_service_profile_template, configure_lan_connectivity_policy
-from ucs_main import configure_san_connectivity_policy, create_sp_from_template, ucs_logon
+from ucs_main import configure_san_connectivity_policy, create_sp_from_template
 
 
 akl_vlan = ['1030','1031','1032','1033','1034','1035','1036','1037','1038','1039','1040','1041','1042','1043','1044',
@@ -13,7 +14,7 @@ akl_vlan = ['1030','1031','1032','1033','1034','1035','1036','1037','1038','1039
             '2824','2825','2826','2827','2828','2828','2830','3002','3010','3030','503','505','513','537','544','549',
             '554']
 
-handle = ucs_logon(ip_addr="192.168.2.23", usr="ucspe", pw="ucspe")
+handle = ucs_logon(ip_addr="192.168.100.132", usr="ucspe", pw="ucspe")
 configure_organisation(handle, name="AKL-VI-APP")
 
 configure_mac_pools(handle, "AKL-VI-APP","AKL MAC Pool for Fabric A","AKL_VI_App_MAC-A","00:25:B5:3A:00:00", "00:25:B5:3A:00:FF")
