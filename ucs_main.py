@@ -48,9 +48,9 @@ def configure_uuid_pool(handle, org, name, descr, assgn_order, uuid_to, uuid_fro
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'Organisation {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}  Organisation {}, not configured. '.format(UcsException, name))
+        print(Fore.GREEN + 'UUID {} configured'.format(name))
+    except:
+        print(Fore.YELLOW + 'Error: UUID {}, {}. '.format(name, sys.exc_info()[1]))
 
 
 
@@ -243,7 +243,8 @@ def configure_vlans(handle, vlan_id, vlan_name):
         handle.commit()
         print(Fore.GREEN + 'VLAN {} configured'.format(vlan_id_cleaned))
     except:
-        print(Fore.YELLOW + 'Error: VLAN {}, {}. '.format(vlan_id_cleaned, sys.exc_info()[1]))
+        print(Fore.YELLOW + 'Error: VLAN {}, {}. '.format(vlan_id_cleaned,
+            sys.exc_info()[1]))
 
 
 
@@ -251,16 +252,18 @@ def configure_mac_pools(handle, org, description, name, mac_from, mac_to):
     from ucsmsdk.mometa.macpool.MacpoolPool import MacpoolPool
     from ucsmsdk.mometa.macpool.MacpoolBlock import MacpoolBlock
 
-    mo = MacpoolPool(parent_mo_or_dn="org-root/org-{}".format(org), policy_owner="local", descr=description,
-                     assignment_order="sequential", name=name)
+    mo = MacpoolPool(parent_mo_or_dn="org-root/org-{}".format(org),
+                        policy_owner="local", descr=description,
+                        assignment_order="sequential", name=name)
     mo_1 = MacpoolBlock(parent_mo_or_dn=mo, to=mac_to, r_from=mac_from)
     handle.add_mo(mo)
 
     try:
         handle.commit()
         print(Fore.GREEN + 'MAC Pool {} configured'.format(name))
-    except UcsException:
-        print(Fore.RED + 'Error: {}, MAC Pool {}. '.format(UcsException.error_code, name))
+    except:
+        print(Fore.YELLOW + 'Error: MAC Pool {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
 def configure_ip_pools(handle, org, description, name, ip_from, ip_to, ip_gw = "10.233.178.1",
@@ -289,17 +292,19 @@ def configure_qos_policy(handle, org, description, name, priority, burst):
     from ucsmsdk.mometa.epqos.EpqosDefinition import EpqosDefinition
     from ucsmsdk.mometa.epqos.EpqosEgress import EpqosEgress
 
-    mo = EpqosDefinition(parent_mo_or_dn="org-root/org-{}".format(org), policy_owner="local", name=name,
-                         descr=description)
-    mo_1 = EpqosEgress(parent_mo_or_dn=mo, rate="line-rate", host_control="none", name="", prio=priority,
-                       burst=burst)
+    mo = EpqosDefinition(parent_mo_or_dn="org-root/org-{}".format(org),
+                        policy_owner="local", name=name, descr=description)
+    mo_1 = EpqosEgress(parent_mo_or_dn=mo, rate="line-rate",
+                        host_control="none", name="", prio=priority,
+                       burst=str(burst))
     handle.add_mo(mo)
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'QoS Policy{} configured'.format(name))
+        print(Fore.GREEN + 'QoS Policy {} configured'.format(name))
     except:
-        print(Fore.YELLOW + 'Unable to configure QoS Policy {}. Does it already exist?'.format(name))
+        print(Fore.YELLOW + 'Error: QoS Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
         #data = handle.set_dump_xml()
         #print(data)
 
@@ -394,7 +399,8 @@ def configure_vsans(handle, name='',
         print(Fore.YELLOW + 'Error: VSAN {}, {}. '.format(vsan_id, sys.exc_info()[1]))
 
 
-def configure_vhba_templates(handle, org, description, name, wwpn_pool, vsan_name, fabric = 'A', qos_pol='VI-FC'):
+def configure_vhba_templates(handle, org, description, name, wwpn_pool,
+    vsan_name, fabric = 'A', qos_pol='VI-FC'):
     from ucsmsdk.mometa.vnic.VnicSanConnTempl import VnicSanConnTempl
     from ucsmsdk.mometa.vnic.VnicFcIf import VnicFcIf
 
