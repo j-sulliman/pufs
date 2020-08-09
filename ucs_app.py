@@ -2,6 +2,9 @@ from ucs_main import ucs_logon, configure_organisation, configure_uuid_pool
 from ucs_main import configure_vlans, configure_vsans, configure_mac_pools
 from ucs_main import configure_ip_pools, configure_uuid_pool, configure_qos_policy
 from ucs_main import configure_sol_policy, configure_cdp_pol
+from ucs_main import configure_vnic_templates, configure_scrub_policy
+from ucs_main import configure_san_connectivity_policy, configure_bios_policy
+from ucs_main import configure_vhba_templates, configure_local_disk_conf_policy
 import pandas as pd
 import argparse
 
@@ -20,6 +23,36 @@ handle = ucs_logon(ip_addr=args.a, usr=args.u, pw=args.p)
 orgs = pd.read_excel(open(args.f, 'rb'), sheet_name='Organisations')
 for index, row in orgs.iterrows():
     configure_organisation(handle, name=row['Name'])
+
+bios_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='BiosPol')
+for index, row in bios_pol.iterrows():
+    configure_bios_policy(handle, org=row['Org'], name=row['Name'],
+                        descr=row['Desc'], quiet_boot=row['QuietBoot'],
+                        cdn_ctrl=row['CDNControl'],
+                        post_err_pause=row['PostErrorPause'],
+                        reboot_on_upd=row['RebootOnupdate'])
+
+sol_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='SolPolicy')
+for index, row in sol_pol.iterrows():
+    configure_sol_policy(handle, org=row['Org'], name=row['Name'],
+                        descr=row['Desc'], baud_speed=row['Speed'])
+
+local_disk_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='LocalDiskConfigPol')
+for index, row in local_disk_pol.iterrows():
+    configure_local_disk_conf_policy(handle, org=row['Org'], name=row['Name'],
+                        descr=row['Desc'], mode=row['Mode'],
+                        flex_flash=row['FlexFlash'],
+                        flex_flash_report=row['FlexFlashReporting'],
+                        flex_flash_remove=row['FlexFlashRemovableState'])
+
+cdp_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='NetworkControlPolicy')
+for index, row in cdp_pol.iterrows():
+    configure_cdp_pol(handle, org=row['Org'], description=row['Desc'],
+                        name=row['Name'], cdp=row['CDP'],
+                        macreg=row['MACRegisterMode'],
+                         actionon=row['ActionOnUplinkFailure'],
+                         macsec=row['MACSecurityForge'],
+                         lldprx=row['LLDPRx'], lldptx=row['LLDPTx'])
 
 mac_pool = pd.read_excel(open(args.f, 'rb'), sheet_name='MacPools')
 for index, row in mac_pool.iterrows():
@@ -48,12 +81,40 @@ for index, row in ip_pool.iterrows():
             ip_subnet=row['SubnetMask'], dns_prim=row['PrimaryDNS'],
             dns_sec=row['SecondaryDNS'])
 
+vsans = pd.read_excel(open(args.f, 'rb'), sheet_name='Vsans')
+for index, row in vsans.iterrows():
+    configure_vsans(handle, name=row['VsanName'], vsan_id=row['VsanId'],
+                        fabric=row['Fabric'])
+
+vhba_tmpl = pd.read_excel(open(args.f, 'rb'), sheet_name='vHBATemplates')
+for index, row in vhba_tmpl.iterrows():
+    for index2, row2 in vsans.iterrows():
+        if row['Name'] == row2['VHBA-Template-1'] or row['Name'] \
+            == row2['VHBA-Template-2']:
+            configure_vhba_templates(handle, org=row['Org'],
+                description=row['Desc'], name=row['Name'],
+                wwpn_pool=row['WwpnPool'],
+                vsan_name=row['VsanName'], fabric =row['FabricID'],
+                qos_pol=row['QosPolicy'])
+
 vlans = pd.read_excel(open(args.f, 'rb'), sheet_name='Vlans')
 for index, row in vlans.iterrows():
     configure_vlans(handle, vlan_id=str(row['VlanId']),
                     vlan_name=row['VlanName'])
 
-vsans = pd.read_excel(open(args.f, 'rb'), sheet_name='Vsans')
-for index, row in vsans.iterrows():
-    configure_vsans(handle, name=row['VsanName'], vsan_id=row['VsanId'],
-                        fabric=row['Fabric'])
+
+
+vnic_tmpl = pd.read_excel(open(args.f, 'rb'), sheet_name='vNICTemplates')
+for index, row in vnic_tmpl.iterrows():
+    for index2, row2 in vlans.iterrows():
+        if row['Name'] == row2['VNIC-Template-A'] or row['Name'] \
+            == row2['VNIC-Template-B']:
+            configure_vnic_templates(handle, org=row['Org'],
+                                         description=row['Desc'],
+                                         name=row['Name'],
+                                         mac_pool=row['MacPool'],
+                                         mtu=str(row['MTU']),
+                                         qos_pol=row['QosPolicy'],
+                                         network_ctrl_pol=row['NetworkControlPolicy'],
+                                         vlan_name=row2['VlanName'],
+                                         switch=row['FabricID'])

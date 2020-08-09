@@ -45,7 +45,6 @@ def configure_uuid_pool(handle, org, name, descr, assgn_order, uuid_to, uuid_fro
     mo_1 = UuidpoolBlock(parent_mo_or_dn=mo, to=uuid_to, r_from=uuid_from)
     handle.add_mo(mo)
 
-
     try:
         handle.commit()
         print(Fore.GREEN + 'UUID {} configured'.format(name))
@@ -75,65 +74,69 @@ def configure_boot_policy(handle, org, name, descr):
     except UcsException:
         print(Fore.YELLOW + 'Error: {}, Boot Policy {}. '.format(UcsException, name))
 
-def configure_local_disk_conf_policy(handle, org, name, descr):
+def configure_local_disk_conf_policy(handle, org, name, descr, mode, flex_flash,
+                                    flex_flash_report, flex_flash_remove):
     from ucsmsdk.mometa.storage.StorageLocalDiskConfigPolicy import StorageLocalDiskConfigPolicy
 
-    mo = StorageLocalDiskConfigPolicy(parent_mo_or_dn="org-root/org-{}".format(org), protect_config="yes", name=name,
-                                      descr=descr, flex_flash_raid_reporting_state="enable",
-                                      flex_flash_state="disable", policy_owner="local", mode="raid-mirrored")
+    mo = StorageLocalDiskConfigPolicy(parent_mo_or_dn="org-root/org-{}".format(
+            org), protect_config="yes", name=name, descr=descr,
+            flex_flash_raid_reporting_state=flex_flash_report,
+            flex_flash_state=flex_flash, policy_owner="local", mode=mode)
     handle.add_mo(mo)
 
     try:
         handle.commit()
         print(Fore.GREEN + 'Local Disk Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, Local Disk Policy {}. '.format(UcsException, name))
+    except:
+        print(Fore.YELLOW + 'Error: Local Disk Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
-def configure_bios_policy(handle, org, name, descr, quiet_boot = 'disabled'):
+def configure_bios_policy(handle, org, name, descr, quiet_boot, cdn_ctrl,
+                            post_err_pause, reboot_on_upd):
     ##### Start-Of-PythonScript #####
 
     from ucsmsdk.mometa.bios.BiosVProfile import BiosVProfile
 
-    mo = BiosVProfile(parent_mo_or_dn="org-root/org-{}".format(org), descr=descr, name=name, reboot_on_update="yes")
+    mo = BiosVProfile(parent_mo_or_dn="org-root/org-{}".format(org), descr=descr,
+                      name=name, reboot_on_update=reboot_on_upd)
     handle.add_mo(mo)
 
-    handle.commit()
-    ##### End-Of-PythonScript #####
-    ##### Start-Of-PythonScript #####
-
-    from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
-
-    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Quiet Boot/tokn-param-QuietBoot".format(org, name),
-     is_assigned="yes", settings_mo_rn="Enabled")
-    handle.add_mo(mo, True)
+    try:
+        handle.commit()
+        print(Fore.GREEN + 'BIOS Policy {} configured'.format(name))
+    except:
+        print(Fore.YELLOW + 'Error: BIOS Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
     from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
 
-    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Quiet Boot/tokn-param-QuietBoot".format(org, name),
-        is_assigned="yes", settings_mo_rn="Disabled")
-    handle.add_mo(mo, True)
 
+    from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
+
+    mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Quiet Boot/tokn-param-QuietBoot".format(org, name),
+        is_assigned="yes", settings_mo_rn=quiet_boot)
+    handle.add_mo(mo, True)
 
     from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
 
     mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-POST error pause/tokn-param-POSTErrorPause".format(org, name),
-        is_assigned="yes", settings_mo_rn="Enabled")
+        is_assigned="yes", settings_mo_rn=post_err_pause)
     handle.add_mo(mo, True)
 
 
     from ucsmsdk.mometa.bios.BiosTokenSettings import BiosTokenSettings
 
     mo = BiosTokenSettings(parent_mo_or_dn="org-root/org-{}/bios-prof-{}/tokn-featr-Consistent Device Name Control/tokn-param-cdnEnable".format(org, name),
-        is_assigned="yes", settings_mo_rn="Enabled")
+        is_assigned="yes", settings_mo_rn=cdn_ctrl)
     handle.add_mo(mo, True)
 
 
     try:
         handle.commit()
         print(Fore.GREEN + 'BIOS Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, BIOS Policy {}. '.format(UcsException, name))
+    except:
+        print(Fore.YELLOW + 'Error: BIOS Policy {}, {}. '.format(name, sys.exc_info()[1]))
 
 
 def configure_sol_policy(handle, org, name, descr, baud_speed='115200'):
@@ -143,14 +146,14 @@ def configure_sol_policy(handle, org, name, descr, baud_speed='115200'):
                    descr=descr,
                    parent_mo_or_dn="org-root/org-{}".format(org),
                    name=name,
-                   speed=baud_speed)
+                   speed=str(baud_speed))
     handle.add_mo(mo)
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'Serial Over LAN Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, Serial Over LAN Policy {}. '.format(UcsException, name))
+        print(Fore.GREEN + 'SoL Policy {} configured'.format(name))
+    except:
+        print(Fore.YELLOW + 'Error: SoL Policy {}, {}. '.format(name, sys.exc_info()[1]))
 
 
 def configure_scrub_policy(handle, org, name, descr):
@@ -309,17 +312,18 @@ def configure_qos_policy(handle, org, description, name, priority, burst):
         #print(data)
 
 
-def configure_cdp_pol(handle, org, description, name):
+def configure_cdp_pol(handle, org, description, name, cdp, macreg, actionon,
+                        macsec, lldprx, lldptx):
     from ucsmsdk.mometa.nwctrl.NwctrlDefinition import NwctrlDefinition
     from ucsmsdk.mometa.dpsec.DpsecMac import DpsecMac
 
     mo = NwctrlDefinition(parent_mo_or_dn="org-root/org-{}".format(org),
-                          lldp_transmit="disabled", name=name,
-                          lldp_receive="disabled",
-                          mac_register_mode="only-native-vlan",
+                          lldp_transmit=lldptx, name=name,
+                          lldp_receive=lldprx,
+                          mac_register_mode=macreg,
                           policy_owner="local",
-                          cdp="enabled", uplink_fail_action="link-down", descr=description)
-    mo_1 = DpsecMac(parent_mo_or_dn=mo, forge="allow", policy_owner="local", name="", descr="")
+                          cdp=cdp, uplink_fail_action=actionon, descr=description)
+    mo_1 = DpsecMac(parent_mo_or_dn=mo, forge=macsec, policy_owner="local", name="", descr="")
     handle.add_mo(mo)
 
     try:
@@ -426,7 +430,8 @@ def configure_vhba_templates(handle, org, description, name, wwpn_pool,
         handle.commit()
         print(Fore.GREEN + 'vHBA Template {} configured'.format(name))
     except:
-        print(Fore.YELLOW + 'Unable to configure vHBA Template {}. Does it already exist?'.format(name))
+        print(Fore.YELLOW + 'Error: vHBA Template {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
 def configure_vnic_templates(handle, org,
@@ -466,7 +471,7 @@ def configure_vnic_templates(handle, org,
         handle.commit()
         print(Fore.GREEN + 'vNIC Template {} configured'.format(name))
     except:
-        print(Fore.YELLOW + 'Unable to configure vNIC Template {}. Does it already exist?'.format(name))
+        print(Fore.YELLOW + 'Error: vNIC Template {}, {}. '.format(name, sys.exc_info()[1]))
 
 
 def configure_app_vnic_template(handle, org, desc='',
