@@ -360,7 +360,8 @@ def configure_wwnn_pools(handle, org="org-root/org-AKL-VI-APP",
         handle.commit()
         print(Fore.GREEN + 'WWNN Pool {} configured'.format(wwnn_name))
     except:
-        print(Fore.YELLOW + 'Unable to configure WWNN Pool {}. Does it already exist?'.format(wwnn_name))
+        print(Fore.YELLOW + 'Error: WWNN Pool {}, {}. '.format(wwnn_name,
+                sys.exc_info()[1]))
 
 
 def configure_wwpn_pools(handle, org, description, name, wwpn_from, wwpn_to, assignment_ordr = "sequential"):
