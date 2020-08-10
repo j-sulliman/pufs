@@ -156,33 +156,40 @@ def configure_sol_policy(handle, org, name, descr, baud_speed='115200'):
         print(Fore.YELLOW + 'Error: SoL Policy {}, {}. '.format(name, sys.exc_info()[1]))
 
 
-def configure_scrub_policy(handle, org, name, descr):
+def configure_scrub_policy(handle, org, name, descr, bios_scrub,
+                            flex_flash_scrub, disk_scrub):
     from ucsmsdk.mometa.compute.ComputeScrubPolicy import ComputeScrubPolicy
 
-    mo = ComputeScrubPolicy(parent_mo_or_dn="org-root/org-{}".format(org), flex_flash_scrub="no", name=name,
-                            descr=descr, policy_owner="local", bios_settings_scrub="yes", disk_scrub="no")
+    mo = ComputeScrubPolicy(parent_mo_or_dn="org-root/org-{}".format(org),
+                            flex_flash_scrub=flex_flash_scrub, name=name,
+                            descr=descr, policy_owner="local",
+                            bios_settings_scrub=bios_scrub,
+                            disk_scrub=disk_scrub)
     handle.add_mo(mo)
 
     try:
         handle.commit()
         print(Fore.GREEN + 'Scrub Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, Scrub Policy {}. '.format(UcsException, name))
+    except:
+        print(Fore.YELLOW + 'Error: Scrub Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
-def configure_maint_policy(handle, org, name='', reboot_pol="user-ack", descr=''):
+def configure_maint_policy(handle, org, ss_timer, name='', reboot_pol="user-ack",
+        descr=''):
     from ucsmsdk.mometa.lsmaint.LsmaintMaintPolicy import LsmaintMaintPolicy
 
     mo = LsmaintMaintPolicy(parent_mo_or_dn="org-root/org-{}".format(org), uptime_disr=reboot_pol, name=name,
-                            descr=descr, trigger_config="", soft_shutdown_timer="150-secs", sched_name="",
+                            descr=descr, trigger_config="", soft_shutdown_timer=ss_timer, sched_name="",
                             policy_owner="local")
     handle.add_mo(mo)
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'Scrub Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, Maintenance Policy {}. '.format(UcsException, name))
+        print(Fore.GREEN + 'Maintenance Policy {} configured'.format(name))
+    except:
+        print(Fore.YELLOW + 'Error: Maintenance Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 def create_sp_from_template(handle, start_sp_value=611, sp_quantity=12, sp_name_prefix="csvipresx", org="AKL-VI-APP",
                             template_name="AKL-VI-APPLICATION_1"):
@@ -202,26 +209,30 @@ def create_sp_from_template(handle, start_sp_value=611, sp_quantity=12, sp_name_
         mo_list = handle.process_xml_elem(elem)
 
 
-def configure_host_fw_policy(handle, org, name, descr):
+def configure_host_fw_policy(handle, org, name, descr, ignore_comp_check,
+                        stage_size, rack_bun_ver, upd_trig, mode, blade_bun_ver,
+                        override_def_exc):
     from ucsmsdk.mometa.firmware.FirmwareComputeHostPack import FirmwareComputeHostPack
     from ucsmsdk.mometa.firmware.FirmwareExcludeServerComponent import FirmwareExcludeServerComponent
 
     mo = FirmwareComputeHostPack(parent_mo_or_dn="org-root/org-{}".format(org),
-                                 ignore_comp_check="yes", name=name,
-                                 descr=descr, stage_size="0",
-                                 rack_bundle_version="",
-                                 update_trigger="immediate",
-                                 policy_owner="local", mode="staged",
-                                 blade_bundle_version="",
-                                 override_default_exclusion="yes")
-    mo_1 = FirmwareExcludeServerComponent(parent_mo_or_dn=mo, server_component="local-disk")
+                                 ignore_comp_check=ignore_comp_check, name=name,
+                                 descr=descr, stage_size=stage_size,
+                                 rack_bundle_version=rack_bun_ver,
+                                 update_trigger=upd_trig,
+                                 policy_owner="local", mode=mode,
+                                 blade_bundle_version=blade_bun_ver,
+                                 override_default_exclusion=override_def_exc)
+    mo_1 = FirmwareExcludeServerComponent(parent_mo_or_dn=mo,
+                                        server_component="local-disk")
     handle.add_mo(mo)
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'Firmware Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, Firmware Policy {}. '.format(UcsException, name))
+        print(Fore.GREEN + 'Host Firmware Policy {} configured'.format(name))
+    except:
+        print(Fore.YELLOW + 'Error: Host Firmware Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
 def configure_vlans(handle, vlan_id, vlan_name):
@@ -577,51 +588,36 @@ def configure_lan_connectivity_policy(handle, organisation = "org-root/org-AKL-V
                                       vnic_order="1",
                                       name="UCS_Lan",
                                       vnic_name="vNIC1",
-                                      description="My Description",
-                                      nw_control_pol="AKL-CDP-EN",
-                                      switch_side="A",
-                                      adapter_profile ="VMWare",
-                                      MTU = "9000",
-                                      mac_pool="AKL_VI_App_MAC-B",
-                                      qos_pol="org-root/org-AKL-VI-APP/ep-qos-VI-RP"):
+                                      switch_id="A",
+                                      adapter_profile ="VMWare"
+                                     ):
 
     from ucsmsdk.mometa.vnic.VnicLanConnPolicy import VnicLanConnPolicy
     from ucsmsdk.mometa.vnic.VnicEther import VnicEther
 
     mo = VnicLanConnPolicy(parent_mo_or_dn=organisation,
-                           policy_owner="local",
-                           name=name,
-                           descr=description)
+                           name=name)
 
-    mo_1 = VnicEther(parent_mo_or_dn=mo,
-                     cdn_prop_in_sync="yes",
-                     nw_ctrl_policy_name=nw_control_pol,
-                     admin_host_port="ANY",
-                     admin_vcon="any",
-                     stats_policy_name="default",
-                     admin_cdn_name="",
-                     switch_id=switch_side,
-                     pin_to_group_name="",
-                     name=vnic_name,
-                     order=vnic_order,
-                     qos_policy_name=qos_pol,
-                     adaptor_profile_name=adapter_profile,
-                     ident_pool_name=mac_pool,
-                     cdn_source="vnic-name",
-                     mtu=MTU,
-                     nw_templ_name=vnic_template_name,
-                     addr="derived")
-
+    if switch_id == 'A':
+        mo_1 = VnicEther(parent_mo_or_dn=mo,
+                        adaptor_profile_name=adapter_profile,
+                        name=vnic_name, nw_templ_name=vnic_template_name,
+                        order=vnic_order)
+    elif switch_id == 'B':
+        mo_1 = VnicEther(parent_mo_or_dn=mo,
+                        adaptor_profile_name=adapter_profile,
+                        name=vnic_name, nw_templ_name=vnic_template_name,
+                        order=vnic_order, switch_id=switch_id)
 
     try:
         handle.add_mo(mo)
         handle.commit()
-        print(Fore.GREEN + 'LAN Connectivity Policy {} configured'.format(name))
-    except UcsException:
+        print(Fore.GREEN + 'LAN Connectivity Policy {} configured'.format(
+            name))
+    except:
         handle.add_mo(mo, True)
-        handle.commit()
-        print(Fore.RED + 'Error: {}, LAN Connectivity Policy {}. '.format(UcsException, name))
-
+        print(Fore.YELLOW + 'Error: LAN Connectivity Policy {}, {}. '.format(
+                name, sys.exc_info()[1]))
 def configure_service_profile_template(handle, name, type, resolve_remote, descr="",
                        usr_lbl="", src_templ_name="", ext_ip_state="none",
                        ext_ip_pool_name="", ident_pool_name="",
@@ -689,16 +685,13 @@ def configure_service_profile_template(handle, name, type, resolve_remote, descr
 
     # Add Server Pool to template
     LsRequirement(parent_mo_or_dn=mo, name=server_pool_name)
-
-
     try:
-        handle.add_mo(mo)
         handle.commit()
-        print(Fore.GREEN + 'Service Profile Template {} configured'.format(name))
-    except UcsException:
-        handle.add_mo(mo, True)
-        handle.commit()
-        print(Fore.YELLOW + 'Error: {}, Service Profile Template {}.  Modifying object '.format(UcsException, name))
+        print(Fore.GREEN + 'Service Profile Template {} configured'.format(
+            name))
+    except:
+        print(Fore.YELLOW + 'Error: Service Profile Template {}, {}. '.format(
+                name, sys.exc_info()[1]))
 
 
 def query_ucs_class(handle, ucs_class='computeRackUnit', children='False'):

@@ -1,133 +1,211 @@
 [------------- Sending Request to Server ------------
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <configResolveDn
 dn="sys"
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inHierarchical="false">
 </configResolveDn>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-5/blade-3"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-5/blade-3"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
-inDn="sys/chassis-5/blade-3"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
-inDn="sys/chassis-5/blade-3"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-6/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inDn="sys/chassis-6/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
-inDn="sys/chassis-6/blade-1"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<configResolveDn
+dn="sys"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+inHierarchical="false">
+</configResolveDn>
+
+<aaaCheckComputeExtAccess
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+inDn="sys/chassis-5/blade-3"
+inUser="ucspe">
+</aaaCheckComputeExtAccess>
+
+<aaaCheckComputeExtAccess
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+inDn="sys/chassis-5/blade-3"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <configEstimateImpact
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66">
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394">
     <inConfigs>
-<pair key="org-root/org-ORB4ESX/uuid-pool-my-test-uuid">
-    <uuidpoolPool
-    assignmentOrder="sequential"
-    name="my-test-uuid"
-    dn="org-root/org-ORB4ESX/uuid-pool-my-test-uuid"
+<pair key="org-root/org-ProdOrg/lan-conn-pol-testinnng">
+    <vnicLanConnPolicy
+    name="testinnng"
+    dn="org-root/org-ProdOrg/lan-conn-pol-testinnng"
 
     status="created"
 
     sacl="addchild,del,mod">
-        <uuidpoolBlock
-        from="0000-000000001024"
-        to="0000-000000001223"
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC1"
+        nwTemplName="Prod-ESX-App-A"
+        order="1"
 
-        rn="block-from-0000-000000001024-to-0000-000000001223"
+        rn="ether-vNIC1"
         status="created"
 
         sacl="addchild,del,mod">
-        </uuidpoolBlock>
-    </uuidpoolPool>
+        </vnicEther>
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC2"
+        nwTemplName="Prod-ESX-App-B"
+        order="2"
+        switchId="B"
+
+        rn="ether-vNIC2"
+        status="created"
+
+        sacl="addchild,del,mod">
+        </vnicEther>
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC3"
+        nwTemplName="Prod-Backup-A"
+        order="3"
+
+        rn="ether-vNIC3"
+        status="created"
+
+        sacl="addchild,del,mod">
+        </vnicEther>
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC4"
+        nwTemplName="Prod-Backup-B"
+        order="4"
+        switchId="B"
+
+        rn="ether-vNIC4"
+        status="created"
+
+        sacl="addchild,del,mod">
+        </vnicEther>
+    </vnicLanConnPolicy>
 </pair>
     </inConfigs>
 </configEstimateImpact>
 
 <configConfMos
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
+cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
 inHierarchical="false">
     <inConfigs>
-<pair key="org-root/org-ORB4ESX/uuid-pool-my-test-uuid">
-    <uuidpoolPool
-    assignmentOrder="sequential"
-    name="my-test-uuid"
-    dn="org-root/org-ORB4ESX/uuid-pool-my-test-uuid"
+<pair key="org-root/org-ProdOrg/lan-conn-pol-testinnng">
+    <vnicLanConnPolicy
+    name="testinnng"
+    dn="org-root/org-ProdOrg/lan-conn-pol-testinnng"
 
     status="created"
 
     sacl="addchild,del,mod">
-        <uuidpoolBlock
-        from="0000-000000001024"
-        to="0000-000000001223"
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC1"
+        nwTemplName="Prod-ESX-App-A"
+        order="1"
 
-        rn="block-from-0000-000000001024-to-0000-000000001223"
+        rn="ether-vNIC1"
         status="created"
 
         sacl="addchild,del,mod">
-        </uuidpoolBlock>
-    </uuidpoolPool>
+        </vnicEther>
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC2"
+        nwTemplName="Prod-ESX-App-B"
+        order="2"
+        switchId="B"
+
+        rn="ether-vNIC2"
+        status="created"
+
+        sacl="addchild,del,mod">
+        </vnicEther>
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC3"
+        nwTemplName="Prod-Backup-A"
+        order="3"
+
+        rn="ether-vNIC3"
+        status="created"
+
+        sacl="addchild,del,mod">
+        </vnicEther>
+        <vnicEther
+        adaptorProfileName="VMWare"
+        name="vNIC4"
+        nwTemplName="Prod-Backup-B"
+        order="4"
+        switchId="B"
+
+        rn="ether-vNIC4"
+        status="created"
+
+        sacl="addchild,del,mod">
+        </vnicEther>
+    </vnicLanConnPolicy>
 </pair>
     </inConfigs>
 </configConfMos>
-
-<aaaCheckComputeExtAccess
-cookie="1596792455/20bf492f-a251-4c77-b1ed-b2bb89fdaf66"
-inDn="sys/chassis-6/blade-1"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
 -----------------------------------------------------]

@@ -1,11 +1,14 @@
 from ucs_main import ucs_logon, configure_organisation, configure_uuid_pool
 from ucs_main import configure_vlans, configure_vsans, configure_mac_pools
-from ucs_main import configure_ip_pools, configure_uuid_pool, configure_qos_policy
+from ucs_main import configure_ip_pools, configure_uuid_pool
 from ucs_main import configure_sol_policy, configure_cdp_pol
 from ucs_main import configure_vnic_templates, configure_scrub_policy
 from ucs_main import configure_san_connectivity_policy, configure_bios_policy
 from ucs_main import configure_vhba_templates, configure_local_disk_conf_policy
 from ucs_main import configure_wwnn_pools, configure_wwpn_pools
+from ucs_main import configure_maint_policy, configure_qos_policy
+from ucs_main import configure_host_fw_policy, configure_service_profile_template
+from ucs_main import configure_lan_connectivity_policy
 from word_doc import create_word_doc_title, create_word_doc_paragraph
 from word_doc import create_word_doc_table
 import pandas as pd
@@ -17,8 +20,8 @@ def main():
                         required=True)
     parser.add_argument('-u', help='UCSM (u)ser name',type=str, required=True)
     parser.add_argument('-p', help='UCSM (p)assword',type=str, required=True)
-    parser.add_argument('-f', help='Excel Spreadsheet File Name and Path',type=str,
-                        required=True)
+    parser.add_argument('-f', help='Excel Spreadsheet File Name and Path',
+                        type=str, required=True)
     args = parser.parse_args()
 
     handle = ucs_logon(ip_addr=args.a, usr=args.u, pw=args.p)
@@ -27,6 +30,31 @@ def main():
     orgs = pd.read_excel(open(args.f, 'rb'), sheet_name='Organisations')
     for index, row in orgs.iterrows():
         configure_organisation(handle, name=row['Name'])
+
+    host_fw_pol=pd.read_excel(open(args.f, 'rb'), sheet_name='HostFWPol')
+    for index, row in host_fw_pol.iterrows():
+        configure_host_fw_policy(handle, org=row['Org'], name=row['Name'],
+                            descr=row['Descr'],
+                            ignore_comp_check=row['IgnoreCompCheck'],
+                            stage_size=str(row['StageSize']),
+                            rack_bun_ver=row['RackBundleVersion'],
+                            upd_trig=row['UpdateTrigger'],
+                            mode=row['Mode'],
+                            blade_bun_ver=row['BladeBundleVersion'],
+                            override_def_exc=row['OverrideDefaultExclusion'])
+
+    maint_pol=pd.read_excel(open(args.f, 'rb'), sheet_name='MaintenancePol')
+    for index, row in maint_pol.iterrows():
+        configure_maint_policy(handle, org=row['Org'],
+                    ss_timer=row['SoftShutdownTimer'], name=row['Name'],
+                    reboot_pol=row['RebootPol'], descr=row['Desc'])
+
+    scrub_pol=pd.read_excel(open(args.f, 'rb'), sheet_name='ScrubPol')
+    for index, row in scrub_pol.iterrows():
+        configure_scrub_policy(handle, org=row['Org'], name=row['Name'],
+                            descr=row['Desc'], bios_scrub=row['BiosSettingScrub'],
+                            flex_flash_scrub=row['FlexFlashScrub'],
+                            disk_scrub=row['DiskScrub'])
 
     bios_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='BiosPol')
     for index, row in bios_pol.iterrows():
@@ -142,6 +170,51 @@ def main():
                                              vlan_name=row2['VlanName'],
                                              switch=row['FabricID'])
 
+    lan_con_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='LanConnectivityPolicy')
+    for index, row in lan_con_pol.iterrows():
+        print(row['vNICTemplateName'])
+        configure_lan_connectivity_policy(handle,
+                        organisation = "org-root/org-{}".format(row['Org']),
+                        vnic_template_name=row['vNICTemplateName'],
+                          vnic_order=str(row['vNICOrder']),
+                          name=row['Name'],
+                          vnic_name=row['vNICName'],
+                          switch_id=row['SwitchID'],
+                          adapter_profile=row['AdapterPol'])
+
+    sp_template = pd.read_excel(open(args.f, 'rb'),
+                                sheet_name='CreateServceProfileTemplate')
+    for index, row in sp_template.iterrows():
+        configure_service_profile_template(handle, name=row["Name"],
+                                   type=row["type"],
+                                   resolve_remote=row["resolve_remote"],
+                                   descr=row["descr"],
+                                   usr_lbl='',
+                                   src_templ_name='',
+                                   ext_ip_state=row["ext_ip_state"],
+                                   ext_ip_pool_name=row["ext_ip_pool_name"],
+                                   ident_pool_name=row["ident_pool_name"],
+                                   agent_policy_name='',
+                                   bios_profile_name=row["bios_profile_name"],
+                                   boot_policy_name=row["boot_policy_name"],
+                                   dynamic_con_policy_name='',
+                                   host_fw_policy_name=row["host_fw_policy_name"],
+                                   kvm_mgmt_policy_name=row["kvm_mgmt_policy_name"],
+                                   lan_conn_policy_name=row["lan_conn_policy_name"],
+                                   local_disk_policy_name=row["local_disk_policy_name"],
+                                   maint_policy_name=row["maint_policy_name"],
+                                   mgmt_access_policy_name='',
+                                   mgmt_fw_policy_name='',
+                                   power_policy_name='',
+                                   san_conn_policy_name=row["san_conn_policy_name"],
+                                   scrub_policy_name=row["scrub_policy_name"],
+                                   sol_policy_name=row["sol_policy_name"],
+                                   stats_policy_name='',
+                                   vcon_profile_name='',
+                                   vmedia_policy_name='',
+                                   server_pool_name='',
+                                   org=row["Org"])
+
     # Create the Design Document
     doc = create_word_doc_title(doc_title = 'Cisco UCS Detailed Design')
     doc = create_word_doc_paragraph(doc = doc,
@@ -155,6 +228,18 @@ def main():
                 paragraph_text='This section outlines Service Profiles and Server Policies.')
 
     doc = create_word_doc_paragraph(doc = doc,
+            heading_text = 'Host Firmware Policy',
+            heading_level=2,
+            paragraph_text='Host Firmware Policies will be configured as follows:')
+    doc = create_word_doc_table(doc, host_fw_pol)
+
+    doc = create_word_doc_paragraph(doc = doc,
+                heading_text = 'Maintenance Policy',
+                heading_level=2,
+                paragraph_text='Maintenance Policies will be configured as follows:')
+    doc = create_word_doc_table(doc, maint_pol)
+
+    doc = create_word_doc_paragraph(doc = doc,
                 heading_text = 'UUID Pool',
                 heading_level=2,
                 paragraph_text='UUID Pool will be defined as follows:')
@@ -165,6 +250,12 @@ def main():
                 heading_level=2,
                 paragraph_text='BIOS Policies will be configured as follows:')
     doc = create_word_doc_table(doc, bios_pol)
+
+    doc = create_word_doc_paragraph(doc = doc,
+                heading_text = 'Scrub Policies',
+                heading_level=2,
+                paragraph_text='Scrub Policies will be configured as follows:')
+    doc = create_word_doc_table(doc, scrub_pol)
 
     doc = create_word_doc_paragraph(doc = doc,
                 heading_text = 'Local Disk Policies',
@@ -217,6 +308,12 @@ def main():
                 heading_level=2,
                 paragraph_text='vNIC templates will be defined as follows:')
     doc = create_word_doc_table(doc, vnic_tmpl)
+
+    doc = create_word_doc_paragraph(doc = doc,
+                heading_text = 'LAN Connectivity Policy',
+                heading_level=2,
+                paragraph_text='LAN Connectivity Policy will be defined as follows:')
+    doc = create_word_doc_table(doc, lan_con_pol)
 
     doc = create_word_doc_paragraph(doc = doc,
                 heading_text = 'UCS Storage',
