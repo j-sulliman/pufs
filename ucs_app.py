@@ -1,18 +1,18 @@
-from ucs_main import ucs_logon, configure_organisation, configure_uuid_pool
-from ucs_main import configure_vlans, configure_vsans, configure_mac_pools
-from ucs_main import configure_ip_pools, configure_uuid_pool
-from ucs_main import configure_sol_policy, configure_cdp_pol
-from ucs_main import configure_vnic_templates, configure_scrub_policy
-from ucs_main import configure_san_connectivity_policy, configure_bios_policy
-from ucs_main import configure_vhba_templates, configure_local_disk_conf_policy
-from ucs_main import configure_wwnn_pools, configure_wwpn_pools
-from ucs_main import configure_maint_policy, configure_qos_policy
-from ucs_main import configure_host_fw_policy, configure_service_profile_template
-from ucs_main import configure_kvm_policy, configure_san_connectivity_policy
-from ucs_main import configure_lan_connectivity_policy, configure_boot_policy
+from ucs_data.ucs_main import ucs_logon, configure_organisation, configure_uuid_pool
+from ucs_data.ucs_main import configure_vlans, configure_vsans, configure_mac_pools
+from ucs_data.ucs_main import configure_ip_pools, configure_uuid_pool
+from ucs_data.ucs_main import configure_sol_policy, configure_cdp_pol
+from ucs_data.ucs_main import configure_vnic_templates, configure_scrub_policy
+from ucs_data.ucs_main import configure_san_connectivity_policy, configure_bios_policy
+from ucs_data.ucs_main import configure_vhba_templates, configure_local_disk_conf_policy
+from ucs_data.ucs_main import configure_wwnn_pools, configure_wwpn_pools
+from ucs_data.ucs_main import configure_maint_policy, configure_qos_policy
+from ucs_data.ucs_main import configure_host_fw_policy, configure_service_profile_template
+from ucs_data.ucs_main import configure_kvm_policy, configure_san_connectivity_policy
+from ucs_data.ucs_main import configure_lan_connectivity_policy, configure_boot_policy
 
-from word_doc import create_word_doc_title, create_word_doc_paragraph
-from word_doc import create_word_doc_table
+from ucs_data.word_doc import create_word_doc_title, create_word_doc_paragraph
+from ucs_data.word_doc import create_word_doc_table
 
 import pandas as pd
 import argparse
@@ -360,7 +360,17 @@ def main():
                 paragraph_text='WWPN Pools will be defined as follows:')
     doc = create_word_doc_table(doc, wwpn_pool)
 
+    doc = create_word_doc_paragraph(doc = doc,
+                heading_text = 'SAN Connectivity Policy',
+                heading_level=2,
+                paragraph_text='SAN Connectivity Policy will be defined as follows:')
+    doc = create_word_doc_table(doc, san_con_pol)
 
+    doc = create_word_doc_paragraph(doc = doc,
+                heading_text = 'Service Profile Template',
+                heading_level=2,
+                paragraph_text='Service Profile Templates will be defined as follows:')
+    doc = create_word_doc_table(doc, sp_template)
 
     doc.save('demo.docx')
 main()
