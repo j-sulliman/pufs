@@ -8,6 +8,7 @@ Auto generate design documentation
 Gather requirements and design inputs for UCS implementation
 Enter into spreadsheet (ucs-implementation-data.xlsx) - this spreadsheet would be the source of truth for UCS design and implementation detail
 Pre production implementation - Push the configuration parameters / inputs to UCS Platform Emulator and validate and adjust as needed
+![alt text](https://github.com/j-sulliman/pufs/blob/master/Spreadsheet.png)
 
 A Design Document in word format will be automatically generated - this can be used as a starting point for Detailed Design or As Builts
 Once satisified with pre-prod (UCSPE) configuration push to production
