@@ -49,19 +49,24 @@ def configure_uuid_pool(handle, org, name, descr, assgn_order, uuid_to, uuid_fro
         handle.commit()
         print(Fore.GREEN + 'UUID {} configured'.format(name))
     except:
-        print(Fore.YELLOW + 'Error: UUID {}, {}. '.format(name, sys.exc_info()[1]))
+        print(Fore.YELLOW + 'Error: UUID {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
 
-def configure_boot_policy(handle, org, name, descr):
+def configure_boot_policy(handle, org, name, descr, reboot_on_upd,
+        enforce_vnic_name, boot_mode):
     from ucsmsdk.mometa.lsboot.LsbootPolicy import LsbootPolicy
     from ucsmsdk.mometa.lsboot.LsbootVirtualMedia import LsbootVirtualMedia
     from ucsmsdk.mometa.lsboot.LsbootStorage import LsbootStorage
     from ucsmsdk.mometa.lsboot.LsbootLocalStorage import LsbootLocalStorage
     from ucsmsdk.mometa.lsboot.LsbootDefaultLocalImage import LsbootDefaultLocalImage
 
-    mo = LsbootPolicy(parent_mo_or_dn="org-root/org-{}".format(org), name=name, descr=descr,
-                      reboot_on_update="no", policy_owner="local", enforce_vnic_name="yes", boot_mode="legacy")
+    mo = LsbootPolicy(parent_mo_or_dn="org-root/org-{}".format(org), name=name,
+                        descr=descr,reboot_on_update=reboot_on_upd,
+                        policy_owner="local",
+                        enforce_vnic_name=enforce_vnic_name,
+                        boot_mode=boot_mode)
     mo_1 = LsbootVirtualMedia(parent_mo_or_dn=mo, access="read-only-remote", lun_id="0", mapping_name="", order="1")
     mo_2 = LsbootStorage(parent_mo_or_dn=mo, order="2")
     mo_2_1 = LsbootLocalStorage(parent_mo_or_dn=mo_2, )
@@ -71,8 +76,9 @@ def configure_boot_policy(handle, org, name, descr):
     try:
         handle.commit()
         print(Fore.GREEN + 'Boot Policy {} configured'.format(name))
-    except UcsException:
-        print(Fore.YELLOW + 'Error: {}, Boot Policy {}. '.format(UcsException, name))
+    except:
+        print(Fore.YELLOW + 'Error: Boot Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 def configure_local_disk_conf_policy(handle, org, name, descr, mode, flex_flash,
                                     flex_flash_report, flex_flash_remove):
@@ -210,8 +216,8 @@ def create_sp_from_template(handle, start_sp_value=611, sp_quantity=12, sp_name_
 
 
 def configure_host_fw_policy(handle, org, name, descr, ignore_comp_check,
-                        stage_size, rack_bun_ver, upd_trig, mode, blade_bun_ver,
-                        override_def_exc):
+                        stage_size, upd_trig, mode,
+                        override_def_exc, rack_bun_ver='', blade_bun_ver=''):
     from ucsmsdk.mometa.firmware.FirmwareComputeHostPack import FirmwareComputeHostPack
     from ucsmsdk.mometa.firmware.FirmwareExcludeServerComponent import FirmwareExcludeServerComponent
 
@@ -237,15 +243,9 @@ def configure_host_fw_policy(handle, org, name, descr, ignore_comp_check,
 
 def configure_vlans(handle, vlan_id, vlan_name):
     from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
-    if len(vlan_id) == 3:
-        vlan_id_cleaned = "0" + vlan_id
-    elif len(vlan_id) == 2:
-        vlan_id_cleaned = "00" + vlan_id
-    else:
-        vlan_id_cleaned = vlan_id
     mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none",
-                    name="{}_{}".format(vlan_name, vlan_id_cleaned),
-                    id=vlan_id_cleaned,
+                    name=vlan_name,
+                    id=vlan_id,
                     mcast_policy_name="", policy_owner="local",
                     default_net="no", pub_nw_name="",
                     compression_type="included")
@@ -255,9 +255,9 @@ def configure_vlans(handle, vlan_id, vlan_name):
 
     try:
         handle.commit()
-        print(Fore.GREEN + 'VLAN {} configured'.format(vlan_id_cleaned))
+        print(Fore.GREEN + 'VLAN {} configured'.format(vlan_id))
     except:
-        print(Fore.YELLOW + 'Error: VLAN {}, {}. '.format(vlan_id_cleaned,
+        print(Fore.YELLOW + 'Error: VLAN {}, {}. '.format(vlan_id,
             sys.exc_info()[1]))
 
 
@@ -347,7 +347,7 @@ def configure_cdp_pol(handle, org, description, name, cdp, macreg, actionon,
 
 
 
-def configure_wwnn_pools(handle, org="org-root/org-AKL-VI-APP",
+def configure_wwnn_pools(handle, org,
                          wwnn_name="AKL-WWNN-Pool",
                          description="Auckland WWNN pool",
                          assignment_order="sequential",
@@ -355,8 +355,7 @@ def configure_wwnn_pools(handle, org="org-root/org-AKL-VI-APP",
                          to_wwnn="20:00:00:25:B5:00:00:7F"):
     from ucsmsdk.mometa.fcpool.FcpoolInitiators import FcpoolInitiators
     from ucsmsdk.mometa.fcpool.FcpoolBlock import FcpoolBlock
-
-    mo = FcpoolInitiators(parent_mo_or_dn=org,
+    mo = FcpoolInitiators(parent_mo_or_dn='org-root/org-{}'.format(org),
                           name=wwnn_name,
                           policy_owner="local",
                           descr=description,
@@ -373,6 +372,23 @@ def configure_wwnn_pools(handle, org="org-root/org-AKL-VI-APP",
     except:
         print(Fore.YELLOW + 'Error: WWNN Pool {}, {}. '.format(wwnn_name,
                 sys.exc_info()[1]))
+
+def configure_kvm_policy(handle, org, description, name, vmedia_encrypt,
+                        kvm_port):
+    from ucsmsdk.mometa.compute.ComputeKvmMgmtPolicy import ComputeKvmMgmtPolicy
+
+    mo = ComputeKvmMgmtPolicy(parent_mo_or_dn="org-root/org-{}".format(org),
+                            descr=description, name=name,
+                            vmedia_encryption=vmedia_encrypt)
+    handle.add_mo(mo)
+
+    try:
+        handle.commit()
+        print(Fore.GREEN + 'KVM Policy {} configured'.format(name))
+    except:
+        print(Fore.YELLOW + 'Error: KVM Policy {}, {}. '.format(name,
+                sys.exc_info()[1]))
+
 
 
 def configure_wwpn_pools(handle, org, description, name, wwpn_from, wwpn_to, assignment_ordr = "sequential"):
@@ -477,13 +493,17 @@ def configure_vnic_templates(handle, org,
     mo_1 = VnicEtherIf(parent_mo_or_dn=mo,
                        default_net="no",
                        name=vlan_name)
-    handle.add_mo(mo)
+
 
     try:
+        handle.add_mo(mo)
         handle.commit()
         print(Fore.GREEN + 'vNIC Template {} configured'.format(name))
     except:
-        print(Fore.YELLOW + 'Error: vNIC Template {}, {}. '.format(name, sys.exc_info()[1]))
+        handle.add_mo(mo, modify_present=True)
+        handle.commit()
+        print(Fore.YELLOW + 'Error: vNIC Template {}, {}. '.format(name,
+                sys.exc_info()[1]))
 
 
 def configure_app_vnic_template(handle, org, desc='',
@@ -527,61 +547,30 @@ def configure_app_vnic_template(handle, org, desc='',
 
     handle.commit()
 
-def configure_san_connectivity_policy(handle, organisation = "org-root/org-AKL-VI-APP",
-                                      name="UCS_Lan",
-                                      vhba_name="vHBA0",
-                                      vhba_template_name="AKL-SAN-A",
-                                      vsan_name = "AKL-VSAN-A",
-                                      description="My Description",
-                                      switch_side="A",
-                                      vHBA_order="1",
-                                      adapter_profile ="VMWare",
-                                      wwpn_pool="AKL-WWPN-B",
-                                      qos_pol="VI-FC",
-                                      wwnn_pool_name="AKL-WWNN-POOL"):
+def configure_san_connectivity_policy(handle, org, name, wwnn_pool_name,
+                    adaptor_prof_name, vhba_name, vhba_tmpl_name ):
     from ucsmsdk.mometa.vnic.VnicSanConnPolicy import VnicSanConnPolicy
     from ucsmsdk.mometa.vnic.VnicFcNode import VnicFcNode
     from ucsmsdk.mometa.vnic.VnicFc import VnicFc
     from ucsmsdk.mometa.vnic.VnicFcIf import VnicFcIf
 
-    mo = VnicSanConnPolicy(parent_mo_or_dn=organisation,
-                           policy_owner="local",
-                           name=name,
-                           descr=description)
+    mo = VnicSanConnPolicy(parent_mo_or_dn="org-root/org-{}".format(org), name=name)
+    mo_1 = VnicFcNode(parent_mo_or_dn=mo, addr="pool-derived",
+                        ident_pool_name=wwnn_pool_name)
+    mo_2 = VnicFc(parent_mo_or_dn=mo, adaptor_profile_name=adaptor_prof_name,
+                name=vhba_name, nw_templ_name=vhba_tmpl_name, order="1")
+    mo_2_1 = VnicFcIf(parent_mo_or_dn=mo_2, name="default")
 
-    mo_1 = VnicFcNode(parent_mo_or_dn=mo,
-                      ident_pool_name=wwnn_pool_name,
-                      addr="pool-derived")
-
-    mo_2 = VnicFc(parent_mo_or_dn=mo,
-                  cdn_prop_in_sync="yes",
-                  addr="derived",
-                  admin_host_port="ANY",
-                  admin_vcon="any",
-                  stats_policy_name="default",
-                  admin_cdn_name="",
-                  switch_id=switch_side,
-                  pin_to_group_name="",
-                  pers_bind="disabled",
-                  order=vHBA_order,
-                  pers_bind_clear="no",
-                  qos_policy_name=qos_pol,
-                  adaptor_profile_name=adapter_profile,
-                  ident_pool_name=wwpn_pool,
-                  cdn_source="vnic-name",
-                  max_data_field_size="2048",
-                  nw_templ_name=vhba_template_name,
-                  name=vhba_name)
-    mo_2_1 = VnicFcIf(parent_mo_or_dn=mo_2,
-                      name=vsan_name)
     try:
         handle.add_mo(mo)
         handle.commit()
-        print(Fore.GREEN + 'SAN Connectivity Policy {} configured'.format(name))
-    except UcsException:
-        handle.add_mo(mo, True)
+        print(Fore.GREEN + 'SAN Connectivity Policy {} configured'.format(
+            name))
+    except:
+        handle.add_mo(mo, modify_present=True)
         handle.commit()
-        print(Fore.RED + 'Error: {}, SAN Connectivity Policy {}. '.format(UcsException, name))
+        print(Fore.YELLOW + 'Error: SAN Connectivity Policy {}, {}. '.format(
+                name, sys.exc_info()[1]))
 
 def configure_lan_connectivity_policy(handle, organisation = "org-root/org-AKL-VI-APP",
                                       vnic_template_name="AKL-VI-MGMT-A",
@@ -609,13 +598,15 @@ def configure_lan_connectivity_policy(handle, organisation = "org-root/org-AKL-V
                         name=vnic_name, nw_templ_name=vnic_template_name,
                         order=vnic_order, switch_id=switch_id)
 
+
     try:
         handle.add_mo(mo)
         handle.commit()
         print(Fore.GREEN + 'LAN Connectivity Policy {} configured'.format(
             name))
     except:
-        handle.add_mo(mo, True)
+        handle.add_mo(mo, modify_present=True)
+        handle.commit()
         print(Fore.YELLOW + 'Error: LAN Connectivity Policy {}, {}. '.format(
                 name, sys.exc_info()[1]))
 def configure_service_profile_template(handle, name, type, resolve_remote, descr="",
@@ -686,10 +677,13 @@ def configure_service_profile_template(handle, name, type, resolve_remote, descr
     # Add Server Pool to template
     LsRequirement(parent_mo_or_dn=mo, name=server_pool_name)
     try:
+        handle.add_mo(mo)
         handle.commit()
         print(Fore.GREEN + 'Service Profile Template {} configured'.format(
             name))
     except:
+        handle.add_mo(mo, modify_present=True)
+        handle.commit()
         print(Fore.YELLOW + 'Error: Service Profile Template {}, {}. '.format(
                 name, sys.exc_info()[1]))
 

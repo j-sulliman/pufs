@@ -1,210 +1,184 @@
 [------------- Sending Request to Server ------------
 
+<configResolveDn
+dn="org-root/org-ProdOrg/temporary_rn_97/temporary_rn_99"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
+inHierarchical="false">
+</configResolveDn>
+
 <aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inDn="sys/chassis-3/blade-1"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <configResolveDn
-dn="sys"
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+dn="org-root/org-ProdOrg/temporary_rn_97/temporary_rn_101"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inHierarchical="false">
 </configResolveDn>
 
 <aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inDn="sys/chassis-5/blade-3"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
-inDn="sys/chassis-5/blade-3"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
-inDn="sys/chassis-6/blade-1"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
-inDn="sys/chassis-6/blade-1"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
-inDn="sys/chassis-5/blade-3"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inDn="sys/chassis-5/blade-3"
 inUser="ucspe">
 </aaaCheckComputeExtAccess>
 
 <configResolveDn
 dn="sys"
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inHierarchical="false">
 </configResolveDn>
-
-<aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
-inDn="sys/chassis-5/blade-3"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
-
-<aaaCheckComputeExtAccess
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
-inDn="sys/chassis-5/blade-3"
-inUser="ucspe">
-</aaaCheckComputeExtAccess>
 
 <configEstimateImpact
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394">
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5">
     <inConfigs>
-<pair key="org-root/org-ProdOrg/lan-conn-pol-testinnng">
-    <vnicLanConnPolicy
-    name="testinnng"
-    dn="org-root/org-ProdOrg/lan-conn-pol-testinnng"
+<pair key="org-root/org-ProdOrg/san-conn-pol-prod-kvm-scon1">
+    <vnicSanConnPolicy
+    name="prod-kvm-scon1"
+    dn="org-root/org-ProdOrg/san-conn-pol-prod-kvm-scon1"
 
     status="created"
 
     sacl="addchild,del,mod">
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC1"
-        nwTemplName="Prod-ESX-App-A"
+        <vnicFcNode
+        addr="pool-derived"
+        identPoolName="ProdWwnnPool"
+
+        rn="fc-node"
+
+
+        sacl="addchild,del,mod">
+        </vnicFcNode>
+        <vnicFc
+        adaptorProfileName="Linux"
+        name="vhba0"
+        nwTemplName="PRD-KVM-HBA-A"
         order="1"
 
-        rn="ether-vNIC1"
+        rn="fc-vhba0"
         status="created"
 
         sacl="addchild,del,mod">
-        </vnicEther>
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC2"
-        nwTemplName="Prod-ESX-App-B"
+            <vnicFcIf
+            name="default"
+
+            rn="if-default"
+
+
+            sacl="addchild,del,mod">
+            </vnicFcIf>
+        </vnicFc>
+        <vnicFc
+        adaptorProfileName="Linux"
+        name="vhba1"
+        nwTemplName="PRD-KVM-HBA-B"
         order="2"
         switchId="B"
 
-        rn="ether-vNIC2"
+        rn="fc-vhba1"
         status="created"
 
         sacl="addchild,del,mod">
-        </vnicEther>
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC3"
-        nwTemplName="Prod-Backup-A"
-        order="3"
+            <vnicFcIf
+            name="default"
 
-        rn="ether-vNIC3"
-        status="created"
+            rn="if-default"
 
-        sacl="addchild,del,mod">
-        </vnicEther>
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC4"
-        nwTemplName="Prod-Backup-B"
-        order="4"
-        switchId="B"
 
-        rn="ether-vNIC4"
-        status="created"
-
-        sacl="addchild,del,mod">
-        </vnicEther>
-    </vnicLanConnPolicy>
+            sacl="addchild,del,mod">
+            </vnicFcIf>
+        </vnicFc>
+    </vnicSanConnPolicy>
 </pair>
     </inConfigs>
 </configEstimateImpact>
 
 <configConfMos
-cookie="1597052858/ad2313c2-ce71-4aa1-857c-35c844872394"
+cookie="1597102063/6300c1c8-1459-4227-bfd8-6189c00011e5"
 inHierarchical="false">
     <inConfigs>
-<pair key="org-root/org-ProdOrg/lan-conn-pol-testinnng">
-    <vnicLanConnPolicy
-    name="testinnng"
-    dn="org-root/org-ProdOrg/lan-conn-pol-testinnng"
+<pair key="org-root/org-ProdOrg/san-conn-pol-prod-kvm-scon1">
+    <vnicSanConnPolicy
+    name="prod-kvm-scon1"
+    dn="org-root/org-ProdOrg/san-conn-pol-prod-kvm-scon1"
 
     status="created"
 
     sacl="addchild,del,mod">
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC1"
-        nwTemplName="Prod-ESX-App-A"
+        <vnicFcNode
+        addr="pool-derived"
+        identPoolName="ProdWwnnPool"
+
+        rn="fc-node"
+
+
+        sacl="addchild,del,mod">
+        </vnicFcNode>
+        <vnicFc
+        adaptorProfileName="Linux"
+        name="vhba0"
+        nwTemplName="PRD-KVM-HBA-A"
         order="1"
 
-        rn="ether-vNIC1"
+        rn="fc-vhba0"
         status="created"
 
         sacl="addchild,del,mod">
-        </vnicEther>
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC2"
-        nwTemplName="Prod-ESX-App-B"
+            <vnicFcIf
+            name="default"
+
+            rn="if-default"
+
+
+            sacl="addchild,del,mod">
+            </vnicFcIf>
+        </vnicFc>
+        <vnicFc
+        adaptorProfileName="Linux"
+        name="vhba1"
+        nwTemplName="PRD-KVM-HBA-B"
         order="2"
         switchId="B"
 
-        rn="ether-vNIC2"
+        rn="fc-vhba1"
         status="created"
 
         sacl="addchild,del,mod">
-        </vnicEther>
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC3"
-        nwTemplName="Prod-Backup-A"
-        order="3"
+            <vnicFcIf
+            name="default"
 
-        rn="ether-vNIC3"
-        status="created"
+            rn="if-default"
 
-        sacl="addchild,del,mod">
-        </vnicEther>
-        <vnicEther
-        adaptorProfileName="VMWare"
-        name="vNIC4"
-        nwTemplName="Prod-Backup-B"
-        order="4"
-        switchId="B"
 
-        rn="ether-vNIC4"
-        status="created"
-
-        sacl="addchild,del,mod">
-        </vnicEther>
-    </vnicLanConnPolicy>
+            sacl="addchild,del,mod">
+            </vnicFcIf>
+        </vnicFc>
+    </vnicSanConnPolicy>
 </pair>
     </inConfigs>
 </configConfMos>

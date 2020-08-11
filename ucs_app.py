@@ -8,9 +8,12 @@ from ucs_main import configure_vhba_templates, configure_local_disk_conf_policy
 from ucs_main import configure_wwnn_pools, configure_wwpn_pools
 from ucs_main import configure_maint_policy, configure_qos_policy
 from ucs_main import configure_host_fw_policy, configure_service_profile_template
-from ucs_main import configure_lan_connectivity_policy
+from ucs_main import configure_kvm_policy, configure_san_connectivity_policy
+from ucs_main import configure_lan_connectivity_policy, configure_boot_policy
+
 from word_doc import create_word_doc_title, create_word_doc_paragraph
 from word_doc import create_word_doc_table
+
 import pandas as pd
 import argparse
 
@@ -37,10 +40,8 @@ def main():
                             descr=row['Descr'],
                             ignore_comp_check=row['IgnoreCompCheck'],
                             stage_size=str(row['StageSize']),
-                            rack_bun_ver=row['RackBundleVersion'],
                             upd_trig=row['UpdateTrigger'],
                             mode=row['Mode'],
-                            blade_bun_ver=row['BladeBundleVersion'],
                             override_def_exc=row['OverrideDefaultExclusion'])
 
     maint_pol=pd.read_excel(open(args.f, 'rb'), sheet_name='MaintenancePol')
@@ -48,6 +49,14 @@ def main():
         configure_maint_policy(handle, org=row['Org'],
                     ss_timer=row['SoftShutdownTimer'], name=row['Name'],
                     reboot_pol=row['RebootPol'], descr=row['Desc'])
+
+    boot_pol=pd.read_excel(open(args.f, 'rb'), sheet_name='BootPol')
+    for index, row in boot_pol.iterrows():
+        configure_boot_policy(handle, org=row['Org'], name=row['Name'],
+                                descr=row['Desc'],
+                                reboot_on_upd=row['RebootOnUpdate'],
+                                enforce_vnic_name=row['EnforcevNICvHBAName'],
+                                boot_mode=row['BootMode'])
 
     scrub_pol=pd.read_excel(open(args.f, 'rb'), sheet_name='ScrubPol')
     for index, row in scrub_pol.iterrows():
@@ -103,6 +112,12 @@ def main():
         configure_uuid_pool(handle, org=row['Org'], name=row['Name'],
                 descr=row['Desc'], assgn_order='sequential', uuid_to=row['UuidEnd'],
                 uuid_from=row['UuidStart'], pref = 'derived')
+
+    kvm_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='KvmMgtPol')
+    for index, row in kvm_pol.iterrows():
+        configure_kvm_policy(handle, org=row['Org'], description=row['Desc'],
+                            name=row['Name'], vmedia_encrypt=row['vMediaEncrypr'],
+                                kvm_port=row['KVMPort'])
 
 
     ip_pool = pd.read_excel(open(args.f, 'rb'), sheet_name='IpPool')
@@ -172,7 +187,6 @@ def main():
 
     lan_con_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='LanConnectivityPolicy')
     for index, row in lan_con_pol.iterrows():
-        print(row['vNICTemplateName'])
         configure_lan_connectivity_policy(handle,
                         organisation = "org-root/org-{}".format(row['Org']),
                         vnic_template_name=row['vNICTemplateName'],
@@ -181,6 +195,14 @@ def main():
                           vnic_name=row['vNICName'],
                           switch_id=row['SwitchID'],
                           adapter_profile=row['AdapterPol'])
+
+    san_con_pol = pd.read_excel(open(args.f, 'rb'), sheet_name='SanConnectivityPolicy')
+    for index, row in san_con_pol.iterrows():
+        configure_san_connectivity_policy(handle, org=row['Org'],
+                            name=row['Name'], wwnn_pool_name=row['WwnnPool'],
+                            adaptor_prof_name=row['AdapterProfile'],
+                            vhba_name=row['vHBAName'],
+                            vhba_tmpl_name=row['vHBATemplateName'])
 
     sp_template = pd.read_excel(open(args.f, 'rb'),
                                 sheet_name='CreateServceProfileTemplate')
