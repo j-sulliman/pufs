@@ -4,7 +4,7 @@ Reduce implementation time from days to minutes
 Reduce configuration errors by testing deployment against pre-prod in minutes
 Auto generate design documentation
 
-#Suggested Workflow
+# Suggested Workflow
 Gather requirements and design inputs for UCS implementation
 Enter into spreadsheet (ucs-implementation-data.xlsx) - this spreadsheet would be the source of truth for UCS design and implementation detail
 Pre production implementation - Push the configuration parameters / inputs to UCS Platform Emulator and validate and adjust as needed
@@ -16,7 +16,7 @@ Post imported objects to APIC (EPGS are be default included in a preferred group
 ![alt text](https://github.com/j-sulliman/acici/blob/master/Screen%20Shot%202019-07-19%20at%2010.38.25%20AM.png)
 
 # Demo
-https://youtu.be/V_Qyy2QHGVY
+https://youtu.be/nKs3KvOY_Tw
 
 # Setup
 ```
@@ -26,28 +26,21 @@ $ source venv/bin/activate
 
 $ git init
 
-$ git pull https://github.com/j-sulliman/acici.git
+$ git pull https://github.com/j-sulliman/pufs.git
 
 Install the required dependencies:
 
 $ pip3 install -r requirements.txt
 ```
 
-# Start Django Server
+# Running the Script
+Run ucs_app.py with UCSM IP, Username, Password and input spreadsheet arguements as below
 ```
-$ python3 manage.py runserver 0:8080
+$ python ucs_app.py -a <192.168.100.132> -u <ucspe> -p <ucspe> -f <ucs-implementation-data.xlsx>
 
-Watching for file changes with StatReloader
-Performing system checks...
-
-System check identified no issues (0 silenced).
-July 18, 2019 - 13:17:42
-Django version 2.2.2, using settings 'nxos_aci.settings'
-Starting development server at http://0:8080/
-Quit the server with CONTROL-C.
 ```
 
-# Logon and Import NXOS file
+# Validate the configuration in UCSM and Review the generated word document
 i.e. http://127.0.0.1:8080
 Login as admin/C1sc0123
 
