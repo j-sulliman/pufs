@@ -42,4 +42,6 @@ $ python ucs_app.py -a <192.168.100.132> -u <ucspe> -p <ucspe> -f <ucs-implement
 ```
 
 # Validate the configuration in UCSM and Review the generated word document
+![alt text](https://github.com/j-sulliman/pufs/blob/master/UCSM.png)
+
 
