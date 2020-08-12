@@ -1,0 +1,11 @@
+colorama==0.4.3
+lxml==4.5.2
+numpy==1.19.1
+pandas==1.1.0
+pyparsing==2.4.7
+python-dateutil==2.8.1
+python-docx==0.8.10
+pytz==2020.1
+six==1.15.0
+ucsmsdk==0.9.10
+xlrd==1.2.0
