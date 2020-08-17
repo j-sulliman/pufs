@@ -1,3 +1,5 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/j-sulliman/pufs)
+
 # PUFS - Provision UCS from Spreadsheet
 Get a headstart on UCS design and deployment
 Reduce implementation time from days to minutes
